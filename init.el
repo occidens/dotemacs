@@ -3,6 +3,17 @@
 (setq delete-by-moving-to-trash t)
 (setq inhibit-startup-screen t)
 
+;; Backup Settings
+;; Based on http://www.emacswiki.org/emacs/BackupDirectory
+(setq
+   backup-by-copying t      ; don't clobber symlinks
+   backup-directory-alist
+    '((".*" . "~/.saves"))    ; don't litter my fs tree
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)       ; use versioned backups
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
