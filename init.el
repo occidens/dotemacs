@@ -1,3 +1,6 @@
+;;Spelling
+(setq ispell-program-name "aspell")
+
 ;;Markdown
 (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
 (autoload 'gfm-mode "markdown-mode.el" "Major mode for editing GitHub Flavored Markdown files." t)
@@ -32,3 +35,32 @@
 ;;             (setq custom-file "~/.emacs-custom.el")))
      
 ;;      (load custom-file)
+
+
+;; Org-mode Settings
+
+;; Refiling Settings (source: http://permalink.gmane.org/gmane.emacs.orgmode/34029)
+;; any headline with level <= 2 is a target
+(setq org-refile-targets '((nil :maxlevel . 2)
+                                ; all top-level headlines in the
+                                ; current buffer are used (first) as a
+                                ; refile target
+                           (org-agenda-files :maxlevel . 2)))
+
+;; provide refile targets as paths, including the file name
+;; (without directory) as level 1 of the path
+(setq org-refile-use-outline-path 'file)
+
+;; allow to create new nodes (must be confirmed by the user) as
+;; refile targets
+(setq org-refile-allow-creating-parent-nodes 'confirm)
+
+;; refile only within the current buffer
+(defun my/org-refile-within-current-buffer ()
+  "Move the entry at point to another heading in the current buffer."
+  (interactive)
+  (let ((org-refile-targets '((nil :maxlevel . 5))))
+    (org-refile)))
+
+;;Restrict backends handled by VC
+(setq vc-handled-backends '(SVN Git))
