@@ -1,3 +1,6 @@
 [submodule "modes/markdown-mode"]
 	path = modes/markdown-mode
 	url = git://jblevins.org/git/markdown-mode.git
+[submodule "utils/orgmark"]
+	path = utils/orgmark
+	url = https://github.com/occidens/orgmark.git
