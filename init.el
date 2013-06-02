@@ -17,6 +17,9 @@
    kept-old-versions 2
    version-control t)       ; use versioned backups
 
+;;Themes
+(add-to-list 'custom-theme-load-path "~/.emacs.d/color/solarized")
+(load-theme 'solarized-dark t)
 
 ;;Markdown
 (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)

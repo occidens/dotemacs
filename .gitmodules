@@ -4,3 +4,6 @@
 [submodule "utils/orgmark"]
 	path = utils/orgmark
 	url = https://github.com/occidens/orgmark.git
+[submodule "color/solarized"]
+	path = color/solarized
+	url = https://github.com/sellout/emacs-color-theme-solarized.git
