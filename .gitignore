@@ -1,5 +1,8 @@
+.emacs.desktop
+*.orig
 auto-save-list
 tramp
 local.el
+custom.el
 .org-id-locations
 bookmarks
