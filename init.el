@@ -3,6 +3,11 @@
 (setq delete-by-moving-to-trash t)
 (setq inhibit-startup-screen t)
 
+(require 'package)
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+
+(package-initialize)
+
 ;; Backup Settings
 ;; Based on http://www.emacswiki.org/emacs/BackupDirectory
 (setq
