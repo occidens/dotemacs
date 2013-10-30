@@ -44,3 +44,7 @@
 (add-to-list 'load-path "~/.emacs.d/modes/dos-mode")
 (autoload 'dos-mode "dos" "Edit Dos scripts." t)
 (add-to-list 'auto-mode-alist '("\\.bat$" . dos-mode))
+
+;;orgmode-mediawiki
+(add-to-list 'load-path "~/.emacs.d/code/gemein/orgmode-mediawiki")
+(require 'ox-mediawiki)

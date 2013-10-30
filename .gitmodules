@@ -1,3 +1,6 @@
 [submodule "modes/markdown-mode"]
 	path = modes/markdown-mode
 	url = git://jblevins.org/git/markdown-mode.git
+[submodule "code/gemein/orgmode-mediawiki"]
+	path = code/gemein/orgmode-mediawiki
+	url = https://github.com/craftkiller/orgmode-mediawiki.git
