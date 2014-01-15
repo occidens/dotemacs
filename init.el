@@ -1,3 +1,5 @@
+(package-initialize)
+
 ;;Spelling
 (setq ispell-program-name "aspell")
 
@@ -63,6 +65,8 @@
 
 
 ;; Org-mode Settings
+
+(setq org-export-allow-bind-keywords t)
 
 ;; Refiling Settings (source: http://permalink.gmane.org/gmane.emacs.orgmode/34029)
 ;; any headline with level <= 2 is a target
