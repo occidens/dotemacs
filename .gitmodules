@@ -7,3 +7,6 @@
 [submodule "color/solarized"]
 	path = color/solarized
 	url = https://github.com/sellout/emacs-color-theme-solarized.git
+[submodule "modes/ergoemacs-mode"]
+	path = modes/ergoemacs-mode
+	url = https://github.com/ergoemacs/ergoemacs-mode.git
