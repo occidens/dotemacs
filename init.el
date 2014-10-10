@@ -44,6 +44,11 @@
 (autoload 'imath-mode "imath" "Imath mode for math formula input" t)
 (setq imaxima-use-maxima-mode-flag t)
 
+;;YAML
+(add-to-list 'load-path "~/.emacs.d/modes/yaml-mode")
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
 ;; Ergoemacs
 ;;(add-to-list 'load-path "~/.emacs.d/modes/ergoemacs-mode")
 ;;(require 'ergoemacs-mode)

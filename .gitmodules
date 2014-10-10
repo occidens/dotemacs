@@ -10,3 +10,6 @@
 [submodule "modes/ergoemacs-mode"]
 	path = modes/ergoemacs-mode
 	url = https://github.com/ergoemacs/ergoemacs-mode.git
+[submodule "modes/yaml-mode"]
+	path = modes/yaml-mode
+	url = https://github.com/yoshiki/yaml-mode.git
