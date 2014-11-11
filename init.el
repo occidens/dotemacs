@@ -49,6 +49,10 @@
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
+;;Org-journal
+(add-to-list 'load-path "~/.emacs.d/org/org-journal")
+(require 'org-journal)
+
 ;; Ergoemacs
 ;;(add-to-list 'load-path "~/.emacs.d/modes/ergoemacs-mode")
 ;;(require 'ergoemacs-mode)

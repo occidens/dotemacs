@@ -13,3 +13,9 @@
 [submodule "modes/yaml-mode"]
 	path = modes/yaml-mode
 	url = https://github.com/yoshiki/yaml-mode.git
+[submodule "org/org-journal"]
+	path = org/org-journal
+	url = https://github.com/bastibe/org-journal.git
+[submodule "org/org-sync"]
+	path = org/org-sync
+	url = git://orgmode.org/org-sync.git
