@@ -1,5 +1,3 @@
-(package-initialize)
-
 ;;Spelling
 (setq ispell-program-name "aspell")
 (add-to-list 'exec-path "/opt/local/bin")
@@ -8,6 +6,12 @@
 
 (setq delete-by-moving-to-trash t)
 (setq inhibit-startup-screen t)
+
+;; Set up ELPA
+(require 'package)
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+;;(add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/") t)
+(package-initialize)
 
 ;; Backup Settings
 ;; Based on http://www.emacswiki.org/emacs/BackupDirectory
@@ -23,6 +27,8 @@
 ;;Themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/color/solarized")
 (load-theme 'solarized-dark t)
+
+;;MODES
 
 ;;Markdown
 (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
@@ -56,6 +62,22 @@
 ;;Org-octopresss
 (add-to-list 'load-path "~/.emacs.d/org/org-octopress")
 (require 'ox-jekyll)
+
+;;orgmode-mediawiki
+(add-to-list 'load-path "~/.emacs.d/code/gemein/orgmode-mediawiki")
+(require 'ox-mediawiki)
+
+;;mediawiki-mode
+(add-to-list 'load-path "~/.emacs.d/modes/mediawiki-mode")
+(require 'mediawiki)
+
+;;outline mode easy bindings
+;;TODO: also review https://github.com/tj64/outshine
+(add-to-list 'load-path "~/.emacs.d/misc")
+(add-hook 'outline-mode-hook 'my-outline-easy-bindings)
+(add-hook 'outline-minor-mode-hook 'my-outline-easy-bindings)
+(defun my-outline-easy-bindings ()
+       (require 'outline-mode-easy-bindings nil t))
 
 
 ;; Ergoemacs

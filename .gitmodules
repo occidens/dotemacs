@@ -22,3 +22,6 @@
 [submodule "org/org-octopress"]
 	path = org/org-octopress
 	url = https://github.com/yoshinari-nomura/org-octopress.git
+[submodule "code/gemein/orgmode-mediawiki"]
+	path = code/gemein/orgmode-mediawiki
+	url = https://github.com/craftkiller/orgmode-mediawiki.git
