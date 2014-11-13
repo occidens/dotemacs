@@ -19,3 +19,6 @@
 [submodule "org/org-sync"]
 	path = org/org-sync
 	url = git://orgmode.org/org-sync.git
+[submodule "org/org-octopress"]
+	path = org/org-octopress
+	url = https://github.com/yoshinari-nomura/org-octopress.git

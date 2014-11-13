@@ -53,6 +53,11 @@
 (add-to-list 'load-path "~/.emacs.d/org/org-journal")
 (require 'org-journal)
 
+;;Org-octopresss
+(add-to-list 'load-path "~/.emacs.d/org/org-octopress")
+(require 'ox-jekyll)
+
+
 ;; Ergoemacs
 ;;(add-to-list 'load-path "~/.emacs.d/modes/ergoemacs-mode")
 ;;(require 'ergoemacs-mode)
