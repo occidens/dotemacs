@@ -4,3 +4,6 @@
 [submodule "code/gemein/orgmode-mediawiki"]
 	path = code/gemein/orgmode-mediawiki
 	url = https://github.com/craftkiller/orgmode-mediawiki.git
+[submodule "modes/php-mode"]
+	path = modes/php-mode
+	url = https://github.com/ejmr/php-mode.git

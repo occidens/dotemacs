@@ -42,6 +42,10 @@
 (add-to-list 'load-path "~/.emacs.d/modes/mediawiki-mode")
 (require 'mediawiki)
 
+;;php-mode
+(add-to-list 'load-path "~/.emacs.d/modes/php-mode")
+(require 'php-mode)
+
 ;;outline mode easy bindings
 ;;TODO: also review https://github.com/tj64/outshine
 (add-to-list 'load-path "~/.emacs.d/misc")
