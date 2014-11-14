@@ -2,8 +2,7 @@
 *.orig
 auto-save-list
 tramp
-local.el
-custom.el
+local
 .org-id-locations
 bookmarks
 elpa

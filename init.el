@@ -101,10 +101,10 @@
 
 
 ;; Load local stuff
-(load "~/.emacs.d/local")
+(load "~/.emacs.d/local/local.el")
 
 ;; Define custom file
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file "~/.emacs.d/local/custom.el")
 (load custom-file)
 
 ;; (cond ((< emacs-major-version 22)
