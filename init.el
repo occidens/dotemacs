@@ -1,3 +1,11 @@
+;;Base Load Path
+(defconst dotfiles-dir
+  (file-name-directory
+   (or (buffer-file-name) load-file-name))
+  "Base path for customized Emacs configuration")
+
+(add-to-list 'load-path (concat dotfiles-dir "init"))
+
 ;;Spelling
 (setq ispell-program-name "aspell")
 (add-to-list 'exec-path "/opt/local/bin")
@@ -25,8 +33,7 @@
    version-control t)       ; use versioned backups
 
 ;;Themes
-(add-to-list 'custom-theme-load-path "~/.emacs.d/color/solarized")
-(load-theme 'solarized-dark t)
+(require 'init-solarized)
 
 ;;MODES
 
