@@ -25,3 +25,9 @@
 [submodule "code/gemein/orgmode-mediawiki"]
 	path = code/gemein/orgmode-mediawiki
 	url = https://github.com/craftkiller/orgmode-mediawiki.git
+[submodule "org/orglue"]
+	path = org/orglue
+	url = https://github.com/yoshinari-nomura/orglue.git
+[submodule "org/org-jekyll"]
+	path = org/org-jekyll
+	url = https://github.com/juanre/org-jekyll.git
