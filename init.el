@@ -19,11 +19,11 @@
 (setq delete-by-moving-to-trash t)
 (setq inhibit-startup-screen t)
 
-;; Set up ELPA
-(require 'package)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-;;(add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/") t)
-(package-initialize)
+;; Package Setup using Cask and Pallet
+(require 'cask "~/.cask/cask.el")
+(cask-initialize)
+(require 'pallet)
+(pallet-mode t)
 
 ;; Backup Settings
 ;; Based on http://www.emacswiki.org/emacs/BackupDirectory
