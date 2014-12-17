@@ -4,6 +4,7 @@
 
 (depends-on "cask")
 (depends-on "dash")
+(depends-on "debbugs")
 (depends-on "epl")
 (depends-on "f")
 (depends-on "flylisp")
@@ -18,3 +19,7 @@
 (depends-on "rdp" :git "https://github.com/skeeto/rdp")
 (depends-on "workgroups" :git "https://github.com/tlh/workgroups.el")
 (depends-on "sunrise-commander" :git "https://github.com/escherdragon/sunrise-commander")
+(depends-on "git-annex-el" :git "https://github.com/jwiegley/git-annex-el")
+(depends-on "font-lock-studo" :git "https://github.com/Lindydancer/font-lock-studio")
+(depends-on "el2markdown" :git "https://github.com/Lindydancer/el2markdown")
+(depends-on "rex" :git "rsdn:repos/rex.el.git")
