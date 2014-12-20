@@ -16,6 +16,8 @@
 (depends-on "pallet")
 (depends-on "s")
 (depends-on "shut-up")
+(depends-on "peg")
+(depends-on "ace-jump-mode")
 (depends-on "rdp" :git "https://github.com/skeeto/rdp")
 (depends-on "workgroups" :git "https://github.com/tlh/workgroups.el")
 (depends-on "sunrise-commander" :git "https://github.com/escherdragon/sunrise-commander")
@@ -23,3 +25,4 @@
 (depends-on "font-lock-studo" :git "https://github.com/Lindydancer/font-lock-studio")
 (depends-on "el2markdown" :git "https://github.com/Lindydancer/el2markdown")
 (depends-on "rex" :git "rsdn:repos/rex.el.git")
+(depends-on "hideshow-org" :git "https://github.com/shanecelis/hideshow-org.git")

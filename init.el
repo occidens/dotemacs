@@ -8,7 +8,13 @@
    (or (buffer-file-name) load-file-name))
   "Base path for customized Emacs configuration")
 
-(add-to-list 'load-path (concat dotfiles-dir "init"))
+(defsubst add-to-load-path (dir)
+  (add-to-list 'load-path (concat dotfiles-dir dir)))
+
+(add-to-load-path "init")
+(add-to-load-path "systems")
+
+(load (symbol-name system-type) t)	;After http://irreal.org/blog/?p=1331
 
 ;;Spelling
 (setq ispell-program-name "aspell")
@@ -45,6 +51,11 @@
 
 ;;Org
 (require 'init-org)
+
+;;hideshow-org
+
+(require 'hideshow-org)
+(global-set-key "\C-ch" 'hs-org/minor-mode)
 
 ;;Markdown
 (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
@@ -98,6 +109,10 @@
 ;;Ergoemacs
 ;;TODO: Sort out key mapping problems and give it another go
 ;;(require 'init-ergoeamcs)
+
+;;ace-jump-mode
+(autoload 'ace-jump-mode "ace-jump-mode" "Emacs quick move minor mode" t)
+(define-key global-map (kbd "H-c SPC") 'ace-jump-mode)
 
 ;; Load local stuff
 (add-to-list 'load-path "~/.emacs.d/local")
