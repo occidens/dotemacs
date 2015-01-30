@@ -14,11 +14,9 @@
 (add-to-load-path "init")
 (add-to-load-path "systems")
 
-(load (symbol-name system-type) t)	;After http://irreal.org/blog/?p=1331
-
-;;Spelling
-(setq ispell-program-name "aspell")
-(add-to-list 'exec-path "/opt/local/bin")
+;; Load system-specific configuration
+;; See http://irreal.org/blog/?p=1331
+(load (symbol-name system-type) t)
 
 (put 'upcase-region 'disabled nil)
 
