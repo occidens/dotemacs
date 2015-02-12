@@ -8,3 +8,7 @@
 ;;Spelling
 (setq ispell-program-name "aspell")
 (add-to-list 'exec-path "/opt/local/bin")
+
+;;Source Directory
+;;TODO resolve version
+(setq source-directory "~/Code/gemein/Machinor/emacs-24.4")
