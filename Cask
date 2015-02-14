@@ -32,3 +32,6 @@
 (depends-on "hideshow-org" :git "https://github.com/shanecelis/hideshow-org.git")
 (depends-on "strie")
 (depends-on "ample-regexps")
+(depends-on "org-caldav" :git "https://github.com/dengste/org-caldav.git")
+(depends-on "ht")
+(depends-on "kv")
