@@ -34,13 +34,16 @@
 ;; Backup Settings
 ;; Based on http://www.emacswiki.org/emacs/BackupDirectory
 (setq
-   backup-by-copying t      ; don't clobber symlinks
-   backup-directory-alist
-    '((".*" . "~/.saves"))    ; don't litter my fs tree
-   delete-old-versions t
-   kept-new-versions 6
-   kept-old-versions 2
-   version-control t)       ; use versioned backups
+ ;; Don't clobber symlinks
+ backup-by-copying      t
+ ;; Don't litter fs with backup files
+ backup-directory-alist '((".*" . "~/.saves"))
+ ;; Prune old backup versions
+ delete-old-versions    t
+ kept-new-versions      6
+ kept-old-versions      2
+ ;; Use versioned backups
+ version-control        t)
 
 ;;Themes
 (require 'init-solarized)
