@@ -35,3 +35,7 @@
 (depends-on "org-caldav" :git "https://github.com/dengste/org-caldav.git")
 (depends-on "ht")
 (depends-on "kv")
+
+;; Ruby Evaluation
+(depends-on "inf-ruby")
+(depends-on "rvm")

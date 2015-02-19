@@ -112,6 +112,9 @@
 (autoload 'ace-jump-mode "ace-jump-mode" "Emacs quick move minor mode" t)
 (define-key global-map (kbd "H-c SPC") 'ace-jump-mode)
 
+;; Ruby
+(require 'init-ruby)
+
 ;; Load local stuff
 (add-to-list 'load-path "~/.emacs.d/local")
 (unless (require 'org-settings nil t) (princ "No org settings found"))
