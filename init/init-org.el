@@ -40,4 +40,9 @@
   (let ((org-refile-targets '((nil :maxlevel . 5))))
     (org-refile)))
 
+;; Key bindings
+(add-hook 'org-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "H-h") 'org-toggle-link-display)))
+
 (provide 'init-org)

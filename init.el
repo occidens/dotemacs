@@ -143,3 +143,8 @@
 
 ;;Restrict backends handled by VC
 (setq vc-handled-backends '(SVN Git))
+
+;;Global keys
+
+(global-set-key (kbd "H-g") 'magit-status)   ;HyperGit!
+(global-set-key (kbd "H-l") 'org-store-link) ;HyperLink
