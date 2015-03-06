@@ -118,6 +118,17 @@
 ;; Ruby
 (require 'init-ruby)
 
+;; Search Engines
+(require 'engine-mode)
+
+(defengine orglist
+  "http://search.gmane.org/?query=%s&group=gmane.emacs.orgmode"
+  "o l")
+
+(defengine worg
+  "http://www.google.com/cse?cx=002987994228320350715%3Az4glpcrritm&ie=UTF-8&q=%s&sa=Search&siteurl=orgmode.org%2Fworg%2F&ref=orgmode.org%2F&ss=1119j179857j8"
+  "o w")
+
 ;; Load local stuff
 (add-to-list 'load-path "~/.emacs.d/local")
 (unless (require 'org-settings nil t) (princ "No org settings found"))
