@@ -36,6 +36,9 @@
 (depends-on "ht")
 (depends-on "kv")
 
+;; Org Modules and Extensions
+(depends-on "ox-mediawiki" :git "https://github.com/tomalexander/orgmode-mediawiki")
+
 ;; Ruby Evaluation
 (depends-on "inf-ruby")
 (depends-on "rvm")
