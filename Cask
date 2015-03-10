@@ -1,6 +1,6 @@
+(source org)
 (source gnu)
 (source melpa)
-(source org)
 
 (depends-on "cask")
 (depends-on "dash")
@@ -22,6 +22,14 @@
 (depends-on "magit")
 (depends-on "magit-annex")
 (depends-on "magit-gitflow")
+(depends-on "strie")
+(depends-on "ample-regexps")
+(depends-on "ht")
+(depends-on "kv")
+(depends-on "inf-ruby")
+(depends-on "rvm")
+
+;;;pallet-ignore
 (depends-on "rdp" :git "https://github.com/skeeto/rdp")
 (depends-on "workgroups" :git "https://github.com/tlh/workgroups.el")
 (depends-on "sunrise-commander" :git "https://github.com/escherdragon/sunrise-commander")
@@ -30,15 +38,8 @@
 (depends-on "el2markdown" :git "https://github.com/Lindydancer/el2markdown")
 (depends-on "rex" :git "rsdn:repos/rex.el.git")
 (depends-on "hideshow-org" :git "https://github.com/shanecelis/hideshow-org.git")
-(depends-on "strie")
-(depends-on "ample-regexps")
+
 (depends-on "org-caldav" :git "https://github.com/dengste/org-caldav.git")
-(depends-on "ht")
-(depends-on "kv")
 
 ;; Org Modules and Extensions
 (depends-on "ox-mediawiki" :git "https://github.com/tomalexander/orgmode-mediawiki")
-
-;; Ruby Evaluation
-(depends-on "inf-ruby")
-(depends-on "rvm")

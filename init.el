@@ -27,9 +27,7 @@
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 (require 'pallet)
-;; Currently pallet-mode clobbers non-ELPA recipes
-;; See https://github.com/rdallasgray/pallet/issues/32
-;;(pallet-mode t)
+(pallet-mode t)
 
 ;; Backup Settings
 ;; Based on http://www.emacswiki.org/emacs/BackupDirectory
