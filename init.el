@@ -11,6 +11,9 @@
 (defsubst add-to-load-path (dir)
   (add-to-list 'load-path (concat dotfiles-dir dir)))
 
+(defsubst dotfiles-path (path)
+  (concat dotfiles-dir path))
+
 (add-to-load-path "init")
 (add-to-load-path "systems")
 
@@ -30,6 +33,11 @@
 (pallet-mode t)
 
 ;; Backup Settings
+
+(require 'backup-each-save)
+(add-hook 'after-save-hook 'backup-each-save)
+(setq backup-each-save-mirror-location (dotfiles-path "backups"))
+
 ;; Based on http://www.emacswiki.org/emacs/BackupDirectory
 (setq
  ;; Don't clobber symlinks
