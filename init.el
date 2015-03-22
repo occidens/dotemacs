@@ -169,10 +169,6 @@ Scans `package-alist'"
 (add-to-list 'load-path "~/.emacs.d/org/org-octopress")
 (require 'ox-jekyll)
 
-;;orgmode-mediawiki
-(add-to-list 'load-path "~/.emacs.d/code/gemein/orgmode-mediawiki")
-(require 'ox-mediawiki)
-
 ;;mediawiki-mode
 (add-to-list 'load-path "~/.emacs.d/modes/mediawiki-mode")
 (require 'mediawiki)
