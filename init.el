@@ -2,6 +2,36 @@
 ;;
 ;;
 
+;; Fundamental Utility Functions
+(defun w/filter (condp lst)
+  "Rudimentary filter.
+
+Delete elements in LST for which CONDP returns nil or which
+are nil to begin with.
+
+Source: https://github.com/hrs/dotfiles"
+  (delq nil
+	(mapcar #'(lambda (x) (and (funcall condp x) x)) lst)))
+
+(defun w/filter-not (condp lst)
+  ""
+  (delq nil
+	(mapcar #'(lambda (x)
+		    (and (not (funcall condp x)) x)) lst)))
+
+(defun w/canonical-path (path)
+  "Return the canonical path of PATH.
+
+Returned string is guaranteed to contain a trailing path
+separator due to the call to `file-name-as-directory'"
+  (file-truename (file-name-as-directory path)))
+
+(defun w/same-directory-p (canonical-path other-path)
+  "Return t if OTHER-PATH points to the same directory as CANONICAL-PATH.
+
+Assumes that CANONICAL-PATH has been verified with `w/canonical-path'"
+  (string-equal canonical-path (w/canonical-path other-path)))
+
 ;;Base Load Path
 (defconst dotfiles-dir
   (file-name-directory
@@ -16,6 +46,40 @@
 
 (add-to-load-path "init")
 (add-to-load-path "systems")
+
+;; Functions for later load-path manipulation
+
+(defun w/package-dir (pkg)
+  "Return the directory from which PKG is loaded.
+
+Scans `package-alist'"
+  (package-desc-dir (cadr (assq pkg package-alist))))
+
+(defun w/filter-load-path (pkg)
+  "Remove path associated with PKG from `load-path'"
+  (let ((pkg-dir (w/canonical-path (w/package-dir pkg))))
+    (setq load-path (w/filter-not
+		     (apply-partially 'w/same-directory-p pkg-dir)
+		     load-path))))
+
+;; Macro for setting customizations
+;; Refer to the following for more information on this problem
+;; - http://lists.gnu.org/archive/html/help-gnu-emacs/2013-08/msg00543.html
+;; - http://stackoverflow.com/questions/18542892/how-do-i-programatically-set-a-custom-variable-in-emacs-lisp/18552615#18552615
+;; - http://emacs.stackexchange.com/questions/102/advantages-of-setting-variables-with-setq-instead-of-custom-el
+;; - http://ergoemacs.org/emacs/emacs_custom_system.html
+(defmacro customize-setq (&rest forms)
+  (let ((tail forms)
+	(comment
+	 (format "Set by call to `customize-setq' in %s, %s"
+		 (buffer-file-name) (what-line)))
+	sym val acc)
+    (while tail
+      (setq sym (car tail)
+	    val (cadr tail)
+	    tail (cddr tail)
+	    acc (append acc `((customize-set-variable ',sym ,val ,comment)))))
+    `(progn ,@acc)))
 
 ;; Load system-specific configuration
 ;; See http://irreal.org/blog/?p=1331
