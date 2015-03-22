@@ -91,10 +91,11 @@ Scans `package-alist'"
 (setq inhibit-startup-screen t)
 
 ;; Package Setup using Cask and Pallet
+(setq package-enable-at-startup nil) ; Ensure packages aren't loaded redundantly
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 (require 'pallet)
-(pallet-mode t)
+(pallet-mode t)			     ; Calls (package-initialize)
 
 ;; Backup Settings
 
