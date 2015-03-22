@@ -116,8 +116,15 @@ Scans `package-alist'"
  ;; Use versioned backups
  version-control        t)
 
-;;Themes
+;;Appearance and Workgroups
 (require 'init-solarized)
+
+(when (and (display-graphic-p)
+	   (non (daemonp)))
+  (require 'workgroups2)
+  (setq wg-session-load-on-start t
+	wg-prefix-key (kbd "H-w"))
+  (workgroups-mode 1))
 
 ;;MODES
 
