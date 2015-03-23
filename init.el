@@ -151,14 +151,6 @@ Scans `package-alist'"
 (autoload 'imath-mode "imath" "Imath mode for math formula input" t)
 (setq imaxima-use-maxima-mode-flag t)
 
-;;Org-journal
-(add-to-list 'load-path "~/.emacs.d/org/org-journal")
-(require 'org-journal)
-
-;;Org-octopresss
-(add-to-list 'load-path "~/.emacs.d/org/org-octopress")
-(require 'ox-jekyll)
-
 ;;outline mode easy bindings
 ;;TODO: also review https://github.com/tj64/outshine
 (add-to-list 'load-path "~/.emacs.d/misc")

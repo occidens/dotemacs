@@ -4,18 +4,6 @@
 [submodule "color/solarized"]
 	path = color/solarized
 	url = https://github.com/sellout/emacs-color-theme-solarized.git
-[submodule "org/org-journal"]
-	path = org/org-journal
-	url = https://github.com/bastibe/org-journal.git
 [submodule "org/org-sync"]
 	path = org/org-sync
 	url = git://orgmode.org/org-sync.git
-[submodule "org/org-octopress"]
-	path = org/org-octopress
-	url = https://github.com/yoshinari-nomura/org-octopress.git
-[submodule "org/orglue"]
-	path = org/orglue
-	url = https://github.com/yoshinari-nomura/orglue.git
-[submodule "org/org-jekyll"]
-	path = org/org-jekyll
-	url = https://github.com/juanre/org-jekyll.git
