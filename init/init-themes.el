@@ -31,4 +31,4 @@
 
 (add-hook 'after-init-hook 'w/load-solarized)
 
-(provide 'init-solarized)
+(provide 'init-themes)

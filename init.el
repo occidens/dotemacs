@@ -117,7 +117,7 @@ Scans `package-alist'"
  version-control        t)
 
 ;;Appearance and Workgroups
-(require 'init-solarized)
+(require 'init-themes)
 
 (when (and (display-graphic-p)
 	   (not (daemonp)))
