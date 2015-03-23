@@ -8,8 +8,7 @@
 ;; Caps Lock and Right Control = Control
 ;; Control Fn and Left Control = Meta
 ;;
-;; To implement, [[https://pqrs.org/osx/karabiner/seil.html.en][Seil]]
-;; is used to map Caps Lock to Right Control
+;; To implement, [[https://pqrs.org/osx/karabiner/seil.html.en][Seil]] is used to map Caps Lock to Right Control
 ;;
 ;; References
 ;; - http://stevelosh.com/blog/2012/10/a-modern-space-cadet/
