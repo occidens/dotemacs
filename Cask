@@ -41,9 +41,9 @@
 (depends-on "org-caldav")
 (depends-on "org-jekyll")
 (depends-on "org-journal")
-(depends-on "org-link-minor-mode" :git "https://github.com/occidens/org-link-minor-mode.git")
 (depends-on "org-octopress")
 (depends-on "org-plus-contrib")
+(depends-on "orglink")
 (depends-on "orglue")
 (depends-on "outline-magic")
 (depends-on "ox-gfm")
@@ -75,7 +75,6 @@
 (depends-on "el2markdown" :git "https://github.com/Lindydancer/el2markdown")
 (depends-on "rex" :git "rsdn:repos/rex.el.git")
 (depends-on "hideshow-org" :git "https://github.com/shanecelis/hideshow-org.git")
-(depends-on "org-link-minor-mode" :git "https://github.com/occidens/org-link-minor-mode.git")
 ;;(depends-on "org-caldav" :git "https://github.com/dengste/org-caldav.git")
 
 ;;(depends-on "simple-call-tree+" :git "https://github.com/vapniks/simple-call-tree-ext.git")
