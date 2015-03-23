@@ -120,7 +120,7 @@ Scans `package-alist'"
 (require 'init-solarized)
 
 (when (and (display-graphic-p)
-	   (non (daemonp)))
+	   (not (daemonp)))
   (require 'workgroups2)
   (setq wg-session-load-on-start t
 	wg-prefix-key (kbd "H-w"))
