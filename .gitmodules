@@ -4,6 +4,3 @@
 [submodule "color/solarized"]
 	path = color/solarized
 	url = https://github.com/sellout/emacs-color-theme-solarized.git
-[submodule "org/org-sync"]
-	path = org/org-sync
-	url = git://orgmode.org/org-sync.git

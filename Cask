@@ -44,6 +44,7 @@
 (depends-on "org-journal")
 (depends-on "org-octopress")
 (depends-on "org-plus-contrib")
+(depends-on "org-sync" :git "git://orgmode.org/org-sync.git")
 (depends-on "orglink")
 (depends-on "orglue")
 (depends-on "outline-magic")
@@ -82,3 +83,4 @@
 
 ;; Org Modules and Extensions
 (depends-on "ox-mediawiki" :git "https://github.com/tomalexander/orgmode-mediawiki")
+(depends-on "org-sync" :git "git://orgmode.org/org-sync.git")
