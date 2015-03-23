@@ -131,6 +131,10 @@ Scans `package-alist'"
 ;;Org
 (require 'init-org)
 
+;; org-link-minor-mode
+(require 'org-link-minor-mode)
+(add-hook 'emacs-lisp-mode-hook #'org-link-minor-mode)
+
 ;;hideshow-org
 
 (require 'hideshow-org)
