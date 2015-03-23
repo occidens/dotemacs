@@ -1,18 +1,9 @@
-[submodule "modes/markdown-mode"]
-	path = modes/markdown-mode
-	url = git://jblevins.org/git/markdown-mode.git
 [submodule "utils/orgmark"]
 	path = utils/orgmark
 	url = https://github.com/occidens/orgmark.git
 [submodule "color/solarized"]
 	path = color/solarized
 	url = https://github.com/sellout/emacs-color-theme-solarized.git
-[submodule "modes/ergoemacs-mode"]
-	path = modes/ergoemacs-mode
-	url = https://github.com/ergoemacs/ergoemacs-mode.git
-[submodule "modes/yaml-mode"]
-	path = modes/yaml-mode
-	url = https://github.com/yoshiki/yaml-mode.git
 [submodule "org/org-journal"]
 	path = org/org-journal
 	url = https://github.com/bastibe/org-journal.git

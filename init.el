@@ -136,17 +136,8 @@ Scans `package-alist'"
 (require 'hideshow-org)
 (global-set-key "\C-ch" 'hs-org/minor-mode)
 
-;;Markdown
-(autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
-(autoload 'gfm-mode "markdown-mode.el" "Major mode for editing GitHub Flavored Markdown files." t)
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-;Use gfm-mode when in a wiki directory
+;; Markdown - use gfm-mode when in a wiki directory
 (add-to-list 'auto-mode-alist '("wiki.*\\.md\\'" . gfm-mode))
-
-;;Dos-Mode
-(add-to-list 'load-path "~/.emacs.d/modes/dos-mode")
-(autoload 'dos-mode "dos" "Edit Dos scripts." t)
-(add-to-list 'auto-mode-alist '("\\.bat$" . dos-mode))
 
 ;; Maxima
 (add-to-list 'load-path "/opt/local/share/maxima/5.22.1/emacs/")
@@ -156,11 +147,6 @@ Scans `package-alist'"
 (autoload 'imath-mode "imath" "Imath mode for math formula input" t)
 (setq imaxima-use-maxima-mode-flag t)
 
-;;YAML
-(add-to-list 'load-path "~/.emacs.d/modes/yaml-mode")
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-
 ;;Org-journal
 (add-to-list 'load-path "~/.emacs.d/org/org-journal")
 (require 'org-journal)
@@ -168,10 +154,6 @@ Scans `package-alist'"
 ;;Org-octopresss
 (add-to-list 'load-path "~/.emacs.d/org/org-octopress")
 (require 'ox-jekyll)
-
-;;mediawiki-mode
-(add-to-list 'load-path "~/.emacs.d/modes/mediawiki-mode")
-(require 'mediawiki)
 
 ;;outline mode easy bindings
 ;;TODO: also review https://github.com/tj64/outshine
@@ -186,7 +168,6 @@ Scans `package-alist'"
 ;;(require 'init-ergoeamcs)
 
 ;;ace-jump-mode
-(autoload 'ace-jump-mode "ace-jump-mode" "Emacs quick move minor mode" t)
 (define-key global-map (kbd "H-c SPC") 'ace-jump-mode)
 
 ;; Ruby
