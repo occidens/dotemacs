@@ -8,6 +8,8 @@
 (depends-on "anaphora")
 (depends-on "backup-each-save")
 (depends-on "cask")
+(depends-on "color-theme")
+(depends-on "color-theme-solarized")
 (depends-on "csharp-mode")
 (depends-on "dash")
 (depends-on "dash-functional")

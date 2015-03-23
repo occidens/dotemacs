@@ -3,9 +3,7 @@
 ;;and https://github.com/bradleywright/emacs-d/blob/master/init-osx.el
 ;;For use with https://github.com/sellout/emacs-color-theme-solarized
 ;;TODO: examine the difference between sellout's theme and https://github.com/bbatsov/solarized-emacs
-
-;;Theme is installed via git submodule
-(add-to-list 'custom-theme-load-path "~/.emacs.d/color/solarized")
+;;TODO: revise the functions now that there is a single theme with light and dark variants
 
 (defun ww-toggle-theme (theme-1 theme-2)
   "Turn off the current theme and turn on a new one. Order of args does not matter"
@@ -29,8 +27,8 @@
 
 (defun ww-load-solarized ()
   "Load Solarized"
-  (load-theme 'solarized-dark t))
-(setq solarized-high-contrast-mode-line t)
+  (load-theme 'solarized t))
+
 (add-hook 'after-init-hook 'ww-load-solarized)
 
 (provide 'init-solarized)
