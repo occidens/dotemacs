@@ -20,6 +20,7 @@
 (depends-on "el2markdown" :git "https://github.com/Lindydancer/el2markdown")
 (depends-on "epl")
 (depends-on "f")
+(depends-on "flx-ido")
 (depends-on "flylisp")
 (depends-on "fm")
 (depends-on "git-annex" :git "https://github.com/jwiegley/git-annex-el")
@@ -46,6 +47,7 @@
 (depends-on "org-journal")
 (depends-on "org-octopress")
 (depends-on "org-plus-contrib")
+(depends-on "org-projectile")
 (depends-on "org-sync" :git "git://orgmode.org/org-sync.git")
 (depends-on "orglink")
 (depends-on "orglue")
@@ -72,6 +74,8 @@
 (depends-on "workgroups2")
 (depends-on "yaml-mode")
 (depends-on "yasnippet")
+(depends-on "zenburn-theme")
+
 ;;;pallet-ignore
 (depends-on "rdp" :git "https://github.com/skeeto/rdp")
 (depends-on "git-annex" :git "https://github.com/jwiegley/git-annex-el")
@@ -83,6 +87,9 @@
 
 ;;(depends-on "simple-call-tree+" :git "https://github.com/vapniks/simple-call-tree-ext.git")
 
-;; Org Modules and Extensions
+;; Org modules that are neither on MELPA nor in `org-plus-contrib'
 (depends-on "ox-mediawiki" :git "https://github.com/tomalexander/orgmode-mediawiki")
 (depends-on "org-sync" :git "git://orgmode.org/org-sync.git")
+
+;; Own versions of published packages
+(depends-on "engine-mode" :git "https://github.com/occidens/engine-mode" :branch "experimental")
