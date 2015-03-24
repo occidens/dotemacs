@@ -18,6 +18,7 @@
 (depends-on "dos")
 (depends-on "draft-mode")
 (depends-on "el2markdown" :git "https://github.com/Lindydancer/el2markdown")
+(depends-on "engine-mode" :git "https://github.com/occidens/engine-mode" :branch "experimental")
 (depends-on "epl")
 (depends-on "f")
 (depends-on "flx-ido")
@@ -93,3 +94,4 @@
 
 ;; Own versions of published packages
 (depends-on "engine-mode" :git "https://github.com/occidens/engine-mode" :branch "experimental")
+(depends-on "org-mac-protocol" :git "https://github.com/occidens/org-mac-protocol" :branch "packaging")
