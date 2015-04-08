@@ -196,5 +196,13 @@ Scans `package-alist'"
 
 ;;Global keys
 
-(global-set-key (kbd "H-g") 'magit-status)   ;HyperGit!
-(global-set-key (kbd "H-l") 'org-store-link) ;HyperLink
+(progn
+  (global-set-key (kbd "H-g") 'magit-status)   ;HyperGit!
+  (global-set-key (kbd "H-l") 'org-store-link) ;HyperLink
+  (global-set-key (kbd "H-h e") 'emacs-index-search)
+  (global-set-key (kbd "H-h l") 'elisp-index-search)
+  (global-set-key (kbd "H-h h") 'info-apropos)
+  ;; Multiple Cursors
+  (global-set-key (kbd "H-.") 'mc/mark-next-like-this)
+  (global-set-key (kbd "H-,") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "H-/") 'mc/mark-all-like-this))
