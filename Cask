@@ -78,7 +78,7 @@
 (depends-on "yaml-mode")
 (depends-on "yasnippet")
 (depends-on "zenburn-theme")
-
+(depends-on "zotxt")
 ;;;pallet-ignore
 (depends-on "rdp" :git "https://github.com/skeeto/rdp")
 (depends-on "git-annex" :git "https://github.com/jwiegley/git-annex-el")
