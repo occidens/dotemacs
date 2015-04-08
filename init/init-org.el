@@ -27,6 +27,15 @@
 
 (setq org-confirm-babel-evaluate 'ww/org-confirm-babel-evaluate)
 
+;;
+;; (defadvice org-sbe (around get-err-msg activate)
+;;   "Issue messages at errors"
+;;   (condition-case err
+;;       (progn ad-do-it
+;; 	     ((error debug)
+;; 	      (message "Error in org-sbe: %S" err)
+;; 	      (signal (car err) (cdr err))))))
+
 ;; Refiling Settings (source: http://permalink.gmane.org/gmane.emacs.orgmode/34029)
 ;; any headline with level <= 2 is a target
 (setq org-refile-targets '((nil :maxlevel . 2)
