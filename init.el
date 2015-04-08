@@ -183,8 +183,9 @@ Scans `package-alist'"
 ;;      (load custom-file)
 
 
-;;Restrict backends handled by VC
-(setq vc-handled-backends '(SVN Git))
+;;VC Configuration
+(setq vc-handled-backends '(SVN Git)
+      vc-follow-symlinks t)
 
 (progn
   (autoload 'emr-show-refactor-menu "emr")
