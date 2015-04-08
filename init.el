@@ -194,6 +194,13 @@ Scans `package-alist'"
 ;;Restrict backends handled by VC
 (setq vc-handled-backends '(SVN Git))
 
+(progn
+  (autoload 'emr-show-refactor-menu "emr")
+  (define-key prog-mode-map (kbd "H-z") 'emr-show-refactor-menu)
+  (eval-after-load "emr" '(emr-initialize)))
+
+(require 'multiple-cursors)
+
 ;;Global keys
 
 (progn
