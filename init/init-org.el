@@ -50,6 +50,16 @@
   (let ((org-refile-targets '((nil :maxlevel . 5))))
     (org-refile)))
 
+;; Link Prefixes
+;; TODO: Define `f~' and `fv' based on system-specific paths
+
+(setq org-link-abbrev-alist
+      `(("f"  . "file:%s")
+	("f~" . "file+sys:~/%s")
+	("fs" . "file+sys:%s")
+	("fv" . "file+sys:/Volumes/%s")
+	("fe" . "file+emacs:%s")))
+
 ;; Key bindings
 (add-hook 'org-mode-hook
 	  (lambda ()
