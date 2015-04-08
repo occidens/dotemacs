@@ -51,5 +51,35 @@
 
 (define-key global-map "\M-Q" 'unfill-paragraph)
 
+(defvar lisp-modes  '(emacs-lisp-mode
+                      inferior-emacs-lisp-mode
+                      ielm-mode
+                      lisp-mode
+                      inferior-lisp-mode
+                      lisp-interaction-mode
+                      slime-repl-mode))
+
+(defvar lisp-mode-hooks
+  (mapcar (function
+           (lambda (mode)
+             (intern
+              (concat (symbol-name mode) "-hook"))))
+          lisp-modes))
+
+(defun scratch ()
+  "Switch to the *scratch* buffer, creating it if it does not exist.
+
+Function copied from jwiegley's dotemacs https://github.com/jwiegley/dot-emacs"
+  (interactive)
+  (let ((current-mode major-mode))
+    (switch-to-buffer-other-window (get-buffer-create "*scratch*"))
+    (goto-char (point-min))
+    (when (looking-at ";")
+      (forward-line 4)
+      (delete-region (point-min) (point)))
+    (goto-char (point-max))
+    (if (memq current-mode lisp-modes)
+        (funcall current-mode))))
+
 (provide 'editing)
 ;;; editing.el ends here
