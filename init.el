@@ -169,9 +169,9 @@ Scans `package-alist'"
 (require 'init-engine)
 
 ;; Load local stuff
-(add-to-list 'load-path "~/.emacs.d/local")
-(unless (require 'org-settings nil t) (princ "No org settings found"))
-(unless (require 'blog-settings nil t) (princ "No blog settings found"))
+(add-to-load-path "local")
+(unless (require 'local-org nil t) (princ "No org settings found"))
+(unless (require 'local-blog nil t) (princ "No blog settings found"))
 
 ;; Define custom file
 (setq custom-file "~/.emacs.d/local/custom.el")
