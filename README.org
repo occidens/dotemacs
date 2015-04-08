@@ -1,1 +1,26 @@
-William West's Emacs Configuration
+#+TITLE: William West's Emacs Configuration
+
+A long time ago, Ovid is said to have issued the following warning
+about Emacs configuration files:
+
+#+BEGIN_QUOTE
+/Adde parvum parvo magnus acervus erit./
+
+Add little to little and there will be a big pile.
+#+END_QUOTE
+
+My Emacs configuration is currently a Big Pile. I do not recommend
+cribbing anything from here, with the possible exception of the method
+I use to get =org-plus-contrib= to always load, if present, even if
+=org= is present.
+
+If you are looking for sources of inspiration for your own Emacs
+configuration, I suggest the following people's repositories as a
+starting point, which represent a good range of approaches to the
+problem:
+
+- [[https://github.com/magnars/.emacs.d][Magnar Sveen]]
+- [[https://github.com/jwiegley/dot-emacs][John Wiegley]]
+- [[https://github.com/hrs/dotfiles/tree/master/emacs.d][Harry R. Schwartz]]
+- [[https://github.com/sachac/.emacs.d][Sacha Chua]]
+- [[https://github.com/DarwinAwardWinner/dotemacs][Ryan C. Thompson]]
