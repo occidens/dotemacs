@@ -8,17 +8,22 @@
 ;; Global Org-mode Settings
 ;; See also local/org-settings
 
+;; Set Custom Variables
+(customize-setq
+ org-export-backends
+ '(ascii html icalendar latex md gfm)
+ org-use-speed-commands t
+ org-export-allow-bind-keywords t)
+
 ;; Additional Packages
 
 (require 'ob-table)
-
-(setq org-export-allow-bind-keywords t)
-
+(require 'ox-gfm)
 
 ;; Don't prompt when evaluating lisp code blocks
 (defun ww/org-confirm-babel-evaluate (lang body)
   "Return t to ask and nil to not ask"
-  (not (string= lang "emacs-lisp")))
+  (not (or (string= lang "ruby") (string= lang "emacs-lisp"))))
 
 (setq org-confirm-babel-evaluate 'ww/org-confirm-babel-evaluate)
 
