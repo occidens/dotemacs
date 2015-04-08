@@ -139,14 +139,6 @@ Scans `package-alist'"
 ;; Markdown - use gfm-mode when in a wiki directory
 (add-to-list 'auto-mode-alist '("wiki.*\\.md\\'" . gfm-mode))
 
-;; Maxima
-(add-to-list 'load-path "/opt/local/share/maxima/5.22.1/emacs/")
-(autoload 'maxima-mode "maxima" "Maxima mode" t)
-(autoload 'imaxima "imaxima" "Frontend for maxima with Image support" t)
-(autoload 'maxima "maxima" "Maxima interaction" t)
-(autoload 'imath-mode "imath" "Imath mode for math formula input" t)
-(setq imaxima-use-maxima-mode-flag t)
-
 ;;outline mode easy bindings
 ;;TODO: also review https://github.com/tj64/outshine
 (add-to-list 'load-path "~/.emacs.d/misc")
