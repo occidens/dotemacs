@@ -1,0 +1,13 @@
+#+TITLE: Emacs Configuration Todo List
+
+* TODO Improve =init.el= organization
+- [ ] Load packages with [[https://github.com/jwiegley/use-package][=use-package=]]
+- [ ] Use =customize= [fn:1] with [[https://github.com/dabrahams/initsplit][=initsplit=]]
+
+* Footnotes
+
+[fn:1] Having multiple calls to =custom-set-variables= caused
+problems in older versions of Emacs, as detailed [[http://dotemacs.de/custbuffer.html][here]]. In short, the
+last call sets the variable but the customize buffer saves its value
+to the first one encountered. But now this no longer seems to be the
+case.
