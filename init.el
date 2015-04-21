@@ -160,6 +160,9 @@ Scans `package-alist'"
 ;; Search Engines
 (require 'init-engine)
 
+;; Git
+(require 'init-git)
+
 ;; Load local stuff
 (add-to-load-path "local")
 (unless (require 'local-org nil t) (princ "No org settings found"))
@@ -197,7 +200,6 @@ Scans `package-alist'"
 ;;Global keys
 
 (progn
-  (global-set-key (kbd "H-g") 'magit-status)   ;HyperGit!
   (global-set-key (kbd "H-l") 'org-store-link) ;HyperLink
   (global-set-key (kbd "H-h e") 'emacs-index-search)
   (global-set-key (kbd "H-h l") 'elisp-index-search)
