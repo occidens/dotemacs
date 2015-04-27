@@ -7,6 +7,7 @@
 (depends-on "ample-regexps")
 (depends-on "anaphora")
 (depends-on "apples-mode")
+(depends-on "async")
 (depends-on "backup-each-save")
 (depends-on "cask")
 (depends-on "color-theme")
@@ -27,15 +28,21 @@
 (depends-on "flylisp")
 (depends-on "fm")
 (depends-on "font-lock-studio")
+(depends-on "full-ack")
 (depends-on "git-annex")
 (depends-on "git-timemachine")
+(depends-on "git-wip-mode" :git "https://github.com/bartman/git-wip.git" :branch "master" :files ("emacs/git-wip-mode.el"))
 (depends-on "git-wip-timemachine")
+(depends-on "gitconfig")
+(depends-on "graphviz-dot-mode")
+(depends-on "hideshow-org" :git "https://github.com/occidens/hideshow-org")
 (depends-on "ht")
 (depends-on "inf-ruby")
 (depends-on "ioccur")
 (depends-on "kv")
 (depends-on "let-alist")
 (depends-on "lex")
+(depends-on "lorem-ipsum")
 (depends-on "macrostep")
 (depends-on "magit")
 (depends-on "magit-annex")
@@ -46,6 +53,7 @@
 (depends-on "noflet")
 (depends-on "org")
 (depends-on "org-caldav")
+(depends-on "org-grep")
 (depends-on "org-jekyll")
 (depends-on "org-journal")
 (depends-on "org-mac-protocol" :git "https://github.com/occidens/org-mac-protocol" :branch "packaging")
@@ -65,7 +73,6 @@
 (depends-on "projectile")
 (depends-on "rainbow-delimiters")
 (depends-on "rdp")
-(depends-on "rex" :git "rsdn:repos/rex.el.git")
 (depends-on "rich-minority")
 (depends-on "rvm")
 (depends-on "s")
@@ -89,9 +96,14 @@
 (depends-on "ox-mediawiki" :git "https://github.com/tomalexander/orgmode-mediawiki")
 (depends-on "org-sync" :git "git://orgmode.org/org-sync.git")
 
+;; Other packages not yet on ELPA or MELPA
+(depends-on "git-wip-mode" :git "https://github.com/bartman/git-wip.git" :branch "master"
+	    :files ("emacs/git-wip-mode.el"))
+
 ;; Own versions of published packages
 (depends-on "engine-mode" :git "https://github.com/occidens/engine-mode" :branch "experimental")
 (depends-on "org-mac-protocol" :git "https://github.com/occidens/org-mac-protocol" :branch "packaging")
+(depends-on "hideshow-org" :git "https://github.com/occidens/hideshow-org")
 
 ;; Own packages
-(depends-on "rex" :git "rsdn:repos/rex.el.git")
+;(depends-on "rex" :git "rsdn:repos/rex.el.git")
