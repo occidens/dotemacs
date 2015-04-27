@@ -208,4 +208,6 @@ Scans `package-alist'"
   ;; Multiple Cursors
   (global-set-key (kbd "H-.") 'mc/mark-next-like-this)
   (global-set-key (kbd "H-,") 'mc/mark-previous-like-this)
-  (global-set-key (kbd "H-/") 'mc/mark-all-like-this))
+  (global-set-key (kbd "H-/") 'mc/mark-all-like-this)
+  ;; Buffers
+  (global-set-key (kbd "H-k") 'bury-buffer))
