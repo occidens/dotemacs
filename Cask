@@ -32,7 +32,6 @@
 (depends-on "full-ack")
 (depends-on "git-annex")
 (depends-on "git-timemachine")
-(depends-on "git-wip-mode" :git "https://github.com/bartman/git-wip.git" :branch "master" :files ("emacs/git-wip-mode.el"))
 (depends-on "git-wip-timemachine")
 (depends-on "gitconfig")
 (depends-on "graphviz-dot-mode")
@@ -98,8 +97,7 @@
 (depends-on "org-sync" :git "git://orgmode.org/org-sync.git")
 
 ;; Other packages not yet on ELPA or MELPA
-(depends-on "git-wip-mode" :git "https://github.com/bartman/git-wip.git" :branch "master"
-	    :files ("emacs/git-wip-mode.el"))
+;; None at the moment
 
 ;; Own versions of published packages
 (depends-on "engine-mode" :git "https://github.com/occidens/engine-mode" :branch "experimental")
