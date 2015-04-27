@@ -24,3 +24,5 @@ problem:
 - [[https://github.com/hrs/dotfiles/tree/master/emacs.d][Harry R. Schwartz]]
 - [[https://github.com/sachac/.emacs.d][Sacha Chua]]
 - [[https://github.com/DarwinAwardWinner/dotemacs][Ryan C. Thompson]]
+- [[https://github.com/jkitchin/jmax][John Kitchin]]
+- [[https://github.com/bradleywright/emacs.d][Bradley Wright]]
