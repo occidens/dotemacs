@@ -19,9 +19,11 @@
       ns-control-modifier       'hyper
       ns-right-control-modifier 'control)
 
+;; Set exec path from shell
+(exec-path-from-shell-initialize)
+
 ;;Spelling
 (setq ispell-program-name "aspell")
-(add-to-list 'exec-path "/opt/local/bin")
 
 ;;Source Directory
 ;;TODO resolve version

@@ -158,7 +158,8 @@ Scans `package-alist'"
 (define-key global-map (kbd "H-c SPC") 'ace-jump-mode)
 
 ;; Ruby
-(require 'init-ruby)
+;; TODO: review how this interacts with `exec-path-from-shell-initialize'
+;;(require 'init-ruby)
 
 ;; Search Engines
 (require 'init-engine)
