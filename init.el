@@ -89,6 +89,7 @@ Scans `package-alist'"
 
 (setq delete-by-moving-to-trash t)
 (setq inhibit-startup-screen t)
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 ;; Package Setup using Cask and Pallet
 (setq package-enable-at-startup nil) ; Ensure packages aren't loaded redundantly
