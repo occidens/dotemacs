@@ -22,6 +22,7 @@
 (depends-on "el2markdown")
 (depends-on "engine-mode" :git "https://github.com/occidens/engine-mode" :branch "experimental")
 (depends-on "epl")
+(depends-on "ert-runner")
 (depends-on "exec-path-from-shell")
 (depends-on "f")
 (depends-on "flx-ido")
