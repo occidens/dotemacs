@@ -81,9 +81,7 @@ Scans `package-alist'"
 	    acc (append acc `((customize-set-variable ',sym ,val ,comment)))))
     `(progn ,@acc)))
 
-;; Load system-specific configuration
-;; See http://irreal.org/blog/?p=1331
-(load (symbol-name system-type) t)
+
 
 (put 'upcase-region 'disabled nil)
 
@@ -97,6 +95,10 @@ Scans `package-alist'"
 (cask-initialize)
 (require 'pallet)
 (pallet-mode t)			     ; Calls (package-initialize)
+
+;; Load system-specific configuration
+;; See http://irreal.org/blog/?p=1331
+(load (symbol-name system-type) t)
 
 ;; Backup Settings
 
