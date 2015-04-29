@@ -47,6 +47,21 @@ Assumes that CANONICAL-PATH has been verified with `w/canonical-path'"
 (add-to-load-path "init")
 (add-to-load-path "systems")
 
+;; PID File
+;; Adapted from http://devblog.avdi.org/2011/06/17/make-emacs-server-write-a-pid-file/
+(defconst w/pid-file (concat dotfiles-dir "run/emacs.pid"))
+
+(add-hook 'emacs-startup-hook
+  (lambda ()
+    (with-temp-file w/pid-file
+      (insert (number-to-string (emacs-pid))))))
+
+(add-hook 'kill-emacs-hook
+  (lambda ()
+    (when (file-exists-p w/pid-file)
+      (delete-file w/pid-file))))
+
+
 ;; Functions for later load-path manipulation
 
 (defun w/package-dir (pkg)
