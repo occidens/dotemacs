@@ -49,17 +49,25 @@ Assumes that CANONICAL-PATH has been verified with `w/canonical-path'"
 
 ;; PID File
 ;; Adapted from http://devblog.avdi.org/2011/06/17/make-emacs-server-write-a-pid-file/
-(defconst w/pid-file (concat dotfiles-dir "run/emacs.pid"))
+(defvar w/pid-file nil
+  "File holding current PID of this Emacs.
 
-(add-hook 'emacs-startup-hook
-  (lambda ()
+The PID file is written by `w/write-pid-file' on startup and
+deleted by `w/delete-pid-file' on shutdown.")
+
+(defun w/write-pid-file ()
+  (let ((temporary-file-directory (concat dotfiles-dir "run"))
+	(prefix (format "emacs-%s~" emacs-version)))
+    (setq w/pid-file (make-temp-file prefix nil ".pid"))
     (with-temp-file w/pid-file
-      (insert (number-to-string (emacs-pid))))))
+      (insert (format "%d\n" (emacs-pid))))))
 
-(add-hook 'kill-emacs-hook
-  (lambda ()
-    (when (file-exists-p w/pid-file)
-      (delete-file w/pid-file))))
+(defun w/delete-pid-file ()
+  (when (file-exists-p w/pid-file)
+    (delete-file w/pid-file)))
+
+(add-hook 'emacs-startup-hook #'w/write-pid-file)
+(add-hook 'kill-emacs-hook #'w/delete-pid-file)
 
 
 ;; Functions for later load-path manipulation
