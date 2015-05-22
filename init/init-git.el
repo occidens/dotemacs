@@ -29,12 +29,23 @@
 (unless (member "wip-save" (magit-get-all "magit.extension"))
   (magit-run-git "config" "--global" "--add" "magit.extension" "wip-save"))
 
+(if (display-graphic-p)
+    (require 'git-gutter-fringe)
+  (require 'git-gutter))
+
+(add-hook 'emacs-lisp-mode-hook 'git-gutter-mode)
+
 (progn
   (global-set-key (kbd "H-g g")   'magit-status)   ;HyperGit!
   (global-set-key (kbd "H-g x")   'magit-git-command)
-  (global-set-key (kbd "H-g C-t") 'git-wip-timemachine-toggle)
-  (global-set-key (kbd "H-g t")   'git-timemachine-toggle))
-
+  ;; git time machines
+  (global-set-key (kbd "H-g t w") 'git-wip-timemachine-toggle)
+  (global-set-key (kbd "H-g t t") 'git-timemachine-toggle)
+  ;; git-gutter
+  (global-set-key (kbd "H-g t g") 'git-gutter:toggle)
+  (global-set-key (kbd "H-g /")	  'git-gutter:popup-hunk)
+  (global-set-key (kbd "H-g ,")	  'git-gutter:previous-hunk)
+  (global-set-key (kbd "H-g .")   'git-gutter:next-hunk))
 
 (provide 'init-git)
 ;;; init-git.el ends here

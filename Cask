@@ -31,6 +31,8 @@
 (depends-on "font-lock-studio")
 (depends-on "full-ack")
 (depends-on "git-annex")
+(depends-on "git-gutter")
+(depends-on "git-gutter-fringe")
 (depends-on "git-timemachine")
 (depends-on "git-wip-timemachine")
 (depends-on "gitconfig")
