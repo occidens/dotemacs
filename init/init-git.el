@@ -30,10 +30,10 @@
   (magit-run-git "config" "--global" "--add" "magit.extension" "wip-save"))
 
 (progn
-  (global-set-key (kbd "H-g g") 'magit-status)   ;HyperGit!
-  (global-set-key (kbd "H-g x") 'magit-git-command)
+  (global-set-key (kbd "H-g g")   'magit-status)   ;HyperGit!
+  (global-set-key (kbd "H-g x")   'magit-git-command)
   (global-set-key (kbd "H-g C-t") 'git-wip-timemachine-toggle)
-  (global-set-key (kbd "H-g t") 'git-timemachine-toggle))
+  (global-set-key (kbd "H-g t")   'git-timemachine-toggle))
 
 
 (provide 'init-git)
