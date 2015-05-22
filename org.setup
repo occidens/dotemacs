@@ -1,0 +1,3 @@
+# -*- mode: org; -*-
+#+MACRO: br @@latex:\\@@@@html:<br>@@
+#+MACRO: textsc @@html:<span style="font-variant:small-caps;">$1</span>@@@@latex:\textsc{$1}@@
