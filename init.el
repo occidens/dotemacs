@@ -237,3 +237,6 @@ Scans `package-alist'"
   (global-set-key (kbd "H-/") 'mc/mark-all-like-this)
   ;; Buffers
   (global-set-key (kbd "H-k") 'bury-buffer))
+
+;;Start server
+(server-start)
