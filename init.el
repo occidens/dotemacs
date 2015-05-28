@@ -63,7 +63,7 @@ deleted by `w/delete-pid-file' on shutdown.")
       (insert (format "%d\n" (emacs-pid))))))
 
 (defun w/delete-pid-file ()
-  (when (file-exists-p w/pid-file)
+  (when (and w/pid-file (file-exists-p w/pid-file))
     (delete-file w/pid-file)))
 
 (add-hook 'emacs-startup-hook #'w/write-pid-file)
