@@ -119,6 +119,23 @@ Scans `package-alist'"
 (require 'pallet)
 (pallet-mode t)			     ; Calls (package-initialize)
 
+(defmacro w/defsystem (sym)
+  (let ((hook (intern (format "w/%s-hook" sym)))
+	(modules (intern (format "w/%s-modules" sym)))
+	(require-modules (intern (format "w/%s-require-modules" sym)))
+	(run--hooks (intern (format "w/run-%s-hooks" sym))))
+    `(prog1
+	 (defvar ,hook nil
+	   ,(format "Hook called on %s systems" sym))
+       (defvar ,modules nil
+	 ,(format "Packages to require when system is %s" sym))
+       (defun ,require-modules ()
+	 (mapcar (lambda (p) (when p (require p))) ,modules))
+       (add-hook ',hook ',require-modules)
+       (defun ,run--hooks ()
+	 (run-hooks ',hook))
+       (add-hook 'emacs-startup-hook ',run--hooks))))
+
 ;; Load system-specific configuration
 ;; See http://irreal.org/blog/?p=1331
 (load (symbol-name system-type) t)
