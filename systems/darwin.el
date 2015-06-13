@@ -27,6 +27,9 @@
 ;;Spelling
 (setq ispell-program-name "aspell")
 
+;; Trashing
+(osx-trash-setup)
+
 ;;Source Directory
 ;;TODO resolve version
 (setq source-directory "~/Code/gemein/Machinor/emacs-24.4")

@@ -108,7 +108,6 @@ Scans `package-alist'"
 
 (put 'upcase-region 'disabled nil)
 
-(setq delete-by-moving-to-trash t)
 (setq inhibit-startup-screen t)
 (setq magit-last-seen-setup-instructions "1.4.0")
 
@@ -139,6 +138,9 @@ Scans `package-alist'"
 ;; Load system-specific configuration
 ;; See http://irreal.org/blog/?p=1331
 (load (symbol-name system-type) t)
+
+;; Trash Setup
+(setq delete-by-moving-to-trash t)
 
 ;; Backup Settings
 
