@@ -176,6 +176,9 @@ Scans `package-alist'"
 ;;Org
 (require 'init-org)
 
+;; Web Development
+(require 'init-web)
+
 ;;hideshow-org
 
 (require 'hideshow-org)
