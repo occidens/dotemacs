@@ -81,5 +81,39 @@ Function copied from jwiegley's dotemacs https://github.com/jwiegley/dot-emacs"
     (if (memq current-mode lisp-modes)
         (funcall current-mode))))
 
+(defun w/rename-file-and-buffer ()
+  "Rename the current buffer and file it is visiting.
+
+Source: [[http://emacsredux.com/blog/2013/05/04/rename-file-and-buffer/][Emacs Redux]]"
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (if (not (and filename (file-exists-p filename)))
+        (message "Buffer is not visiting a file!")
+      (let ((new-name (read-file-name "New name: " filename)))
+        (cond
+         ((vc-backend filename) (vc-rename-file filename new-name))
+         (t
+          (rename-file filename new-name t)
+          (set-visited-file-name new-name t t)))))))
+
+(defalias 'rename-file-and-buffer 'w/rename-file-and-buffer)
+
+
+(defun w/delete-file-and-buffer ()
+  "Kill the current buffer and deletes the file it is visiting.
+
+Source: [[http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/Emacs][Emacs Redux]]"
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (when filename
+      (if (vc-backend filename)
+          (vc-delete-file filename)
+        (progn
+          (delete-file filename)
+          (message "Deleted file %s" filename)
+          (kill-buffer))))))
+
+(defalias 'delete-file-and-buffer 'w/delete-file-and-buffer)
+
 (provide 'editing)
 ;;; editing.el ends here
