@@ -41,6 +41,7 @@
 (depends-on "git-timemachine")
 (depends-on "git-wip-timemachine")
 (depends-on "gitconfig")
+(depends-on "golden-ratio")
 (depends-on "graphviz-dot-mode")
 (depends-on "hideshow-org" :git "https://github.com/occidens/hideshow-org")
 (depends-on "ht")
