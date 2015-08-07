@@ -179,6 +179,9 @@ Scans `package-alist'"
 ;; Web Development
 (require 'init-web)
 
+;; R
+(require 'init-stats)
+
 ;;hideshow-org
 
 (require 'hideshow-org)
