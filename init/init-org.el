@@ -75,6 +75,7 @@
 (org-add-link-type "zotero" (lambda (path)
 			      (browse-url (concat "zotero:" path))))
 
+(add-hook 'org-mode-hook 'auto-fill-mode)
 ;; Key bindings
 (add-hook 'org-mode-hook
 	  (lambda ()
