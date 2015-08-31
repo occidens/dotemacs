@@ -103,6 +103,7 @@
 (depends-on "sunrise-x-tree")
 (depends-on "thingatpt+")
 (depends-on "transpose-frame")
+(depends-on "wc-mode")
 (depends-on "web-mode")
 (depends-on "workgroups2")
 (depends-on "yaml-mode")
