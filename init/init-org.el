@@ -70,6 +70,11 @@
 	("fv" . "file+sys:/Volumes/%s")
 	("fe" . "file+emacs:%s")))
 
+;; Additional Link Types
+
+(org-add-link-type "zotero" (lambda (path)
+			      (browse-url (concat "zotero:" path))))
+
 ;; Key bindings
 (add-hook 'org-mode-hook
 	  (lambda ()
