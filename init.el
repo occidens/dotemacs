@@ -46,6 +46,9 @@ Assumes that CANONICAL-PATH has been verified with `w/canonical-path'"
 
 (add-to-load-path "init")
 (add-to-load-path "systems")
+(add-to-load-path "lisp")
+
+
 
 ;; PID File
 ;; Adapted from http://devblog.avdi.org/2011/06/17/make-emacs-server-write-a-pid-file/
@@ -141,6 +144,9 @@ Scans `package-alist'"
 
 ;; Trash Setup
 (setq delete-by-moving-to-trash t)
+
+;; Editing Functions
+(require 'editing)
 
 ;; Backup Settings
 
