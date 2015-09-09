@@ -145,6 +145,9 @@ Scans `package-alist'"
 ;; Trash Setup
 (setq delete-by-moving-to-trash t)
 
+;; Dired Setup
+(put 'dired-find-alternate-file 'disabled nil)
+
 ;; Editing Functions
 (require 'editing)
 
