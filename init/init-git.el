@@ -24,10 +24,9 @@
 
 ;;; Code:
 
-(global-magit-wip-save-mode t)
-
-(unless (member "wip-save" (magit-get-all "magit.extension"))
-  (magit-run-git "config" "--global" "--add" "magit.extension" "wip-save"))
+(magit-wip-after-save-mode t)
+(magit-wip-after-apply-mode t)
+(magit-wip-before-change-mode t)
 
 (if (display-graphic-p)
     (require 'git-gutter-fringe)
