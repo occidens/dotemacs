@@ -75,6 +75,15 @@
 (org-add-link-type "zotero" (lambda (path)
 			      (browse-url (concat "zotero:" path))))
 
+;; Spell checking
+
+(defun w/org-ispell-skip-setup ()
+  (make-local-variable 'ispell-skip-region-alist)
+  (add-to-list 'ispell-skip-region-alist
+	       (list (org-make-options-regexp '("OPTIONS" "STARTUP")))))
+
+(add-hook 'org-mode-hook 'w/org-ispell-skip-setup)
+
 (add-hook 'org-mode-hook 'auto-fill-mode)
 ;; Key bindings
 (add-hook 'org-mode-hook
