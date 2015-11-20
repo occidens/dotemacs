@@ -37,13 +37,18 @@
 ;; 	      (message "Error in org-sbe: %S" err)
 ;; 	      (signal (car err) (cdr err))))))
 
+(defun w/org-buffer-files ()
+  "Return list of opened orgmode buffer files"
+  (mapcar #'buffer-file-name (org-buffer-list 'files t)))
+
 ;; Refiling Settings (source: http://permalink.gmane.org/gmane.emacs.orgmode/34029)
 ;; any headline with level <= 2 is a target
 (setq org-refile-targets '((nil :maxlevel . 2)
                                 ; all top-level headlines in the
                                 ; current buffer are used (first) as a
                                 ; refile target
-                           (org-agenda-files :maxlevel . 2)))
+                           (org-agenda-files :maxlevel . 2)
+			   (w/org-buffer-files :maxlevel . 2)))
 
 ;; provide refile targets as paths, including the file name
 ;; (without directory) as level 1 of the path
