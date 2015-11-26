@@ -8,6 +8,9 @@
 ;; Global Org-mode Settings
 ;; See also local/org-settings
 
+;; Always enable certain modes with org-mode
+(add-hook 'org-mode-hook 'auto-fill-mode)
+
 ;; Set Custom Variables
 (customize-setq
  org-export-backends
