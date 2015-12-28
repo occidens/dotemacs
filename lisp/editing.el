@@ -66,20 +66,28 @@
               (concat (symbol-name mode) "-hook"))))
           lisp-modes))
 
-(defun scratch ()
-  "Switch to the *scratch* buffer, creating it if it does not exist.
-
-Function copied from jwiegley's dotemacs https://github.com/jwiegley/dot-emacs"
+(defun w/scratch ()
   (interactive)
-  (let ((current-mode major-mode))
-    (switch-to-buffer-other-window (get-buffer-create "*scratch*"))
-    (goto-char (point-min))
-    (when (looking-at ";")
-      (forward-line 4)
-      (delete-region (point-min) (point)))
-    (goto-char (point-max))
-    (if (memq current-mode lisp-modes)
-        (funcall current-mode))))
+  (let ((scratch-buffer (w/get-scratch-buffer-create)))
+    (if (equal (current-buffer) scratch-buffer)
+	(switch-to-buffer (other-buffer))
+      (switch-to-buffer scratch-buffer))))
+
+(defalias 'scratch #'w/scratch)
+
+(defun w/get-scratch-buffer-create (&optional name)
+  "Get or create a scratch buffer in the same way as in `startup.el'
+
+The name of the buffer may be optionally specified with NAME;
+otherwise \"*scratch\". Return the buffer."
+  (let ((buf (get-buffer-create (or name "*scratch*"))))
+    (with-current-buffer buf
+      (when (zerop (buffer-size))
+	(insert initial-scratch-message)
+	(set-buffer-modified-p nil))
+      (when (eq major-mode 'fundamental-mode)
+	(funcall initial-major-mode)))
+    buf))
 
 (defun w/rename-file-and-buffer ()
   "Rename the current buffer and file it is visiting.
