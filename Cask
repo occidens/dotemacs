@@ -21,6 +21,7 @@
 (depends-on "dos")
 (depends-on "draft-mode")
 (depends-on "el2markdown")
+(depends-on "elnode")
 (depends-on "engine-mode" :git "https://github.com/occidens/engine-mode" :branch "experimental")
 (depends-on "engine-mode")
 (depends-on "epic")
