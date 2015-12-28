@@ -25,7 +25,20 @@
 ;;; Code:
 
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-hook 'js-mode-hook 'js2-minor-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;; (add-hook 'js-mode-hook 'js2-minor-mode)
+(add-hook 'js-mode-hook 'indent-guide-mode) ;See also highlight-indentation-mode
+(add-hook 'web-mode-hook 'indent-guide-mode)
+(setq-default js-indent-level 2)
+
+(defun w/web-mode-init ()
+  ;; (setq-local indent-tabs-mode nil)
+  ;; (setq-local tab-width 4)
+  (setq web-mode-markup-indent-offset 2
+	web-mode-css-indent-offset 2
+	web-mode-code-indent-offset 2))
+
+(add-hook 'web-mode-hook 'w/web-mode-init)
 
 (provide 'init-web)
 ;;; init-web.el ends here
