@@ -1,12 +1,152 @@
 #+TITLE: Emacs Configuration Todo List
+#+STARTUP: indent entitiespretty
 
 * TODO Improve =init.el= organization
 - [ ] Load packages with [[https://github.com/jwiegley/use-package][=use-package=]]
 - [ ] Use =customize= [fn:1] with [[https://github.com/dabrahams/initsplit][=initsplit=]]
+** TODO Review =init.el= examples
+- *Magnar Sveen* limits =init.el= to XXX. Organized into
+  - defuns
+  - project-archetypes
+  - settings
+  - site-lisp contains modes and packages
+  - snippets
+  - themes
+  - users
+- [[https://github.com/jwiegley/dot-emacs][John Wiegley]]
+  - File layout
+    - lib/
+    - lisp/
+    - obsolete/
+    - override/
+    - site-lisp/
+    - snippets/
+  - Observations
+    - Uses [[https://github.com/dabrahams/initsplit/blob/master/initsplit.el][initsplit.el]] to divide customization settings into multiple
+      files automatically.
 
+      #+BEGIN_SRC emacs-lisp
+        (custom-set-variables
+         '(initsplit-customizations-alist
+           (quote
+            (("\\`\\(gnus\\|nn\\|message\\|mail\\|mm-\\|smtp\\|send-mail\\|check-mail\\|spam\\|sc-\\)" "~/.emacs.d/gnus-settings.el" nil nil)
+             ("\\`\\(org-\\)" "~/.emacs.d/org-settings.el" nil nil)))))
+      #+END_SRC
+
+    - Uses [[https://github.com/jwiegley/use-package][use-package]] to simplify package loading.
+- [[https://github.com/hrs/dotfiles/tree/master/emacs.d][Harry R. Schwarz]] has a simple structure. Instead of using comments,
+  each logical block of initialization code is wrapped in a function,
+  and then the functions are called at the end of the init file.
+  - lisp/
+  - modes/
+  - themes/
+* TODO Expedients [0/2]
+** TODO Swap Frames
+http://www.emacswiki.org/emacs/TransposeWindows
+http://www.emacswiki.org/emacs/transpose-frame.el
+** TODO Save and Restore Frame Size 
+  - [ ] [[http://stackoverflow.com/questions/335487/programmatically-setting-emacs-frame-size][Programmatically setting frame size]] ([[https://www.gnu.org/software/emacs/manual/html_node/elisp/Window-Frame-Parameters.html#Window-Frame-Parameters][Emacs Manual]])
+     - [ ] [[https://github.com/pashinin/workgroups2][Workgroups2]]: get sorted and make ref card
+* TODO Client/Server Setup on OSX
+  There are a number of ways to do this. [[http://superuser.com/questions/685111/basic-setup-of-emacs-server-under-osx][This StackExchange question]] is a
+  good starting point.
+  - The author of emacsforosx.com uses [[http://emacsformacosx.com/tips][shell script wrappers]], plus an
+    AppleScript snippet to ensure that the client window is activated.
+  - This Emacs [[http://emacs.stackexchange.com/questions/141/emacsdaemon-and-emacsclient-on-mac][StackExchange thread]] has various variations on the
+    theme of shell scripts and AppleScript, with some additional
+    tricks.
+  - The Emacs Wiki has [[http://www.emacswiki.org/emacs/EmacsAsDaemon][instructions]] on how to run the daemon with
+    launchd
+  - https://github.com/brianm/emacs-client-mac/blob/master/emacs-client-mac.scpt
+  - https://gist.github.com/ambethia/304964
+  - http://stackoverflow.com/questions/1167484/how-to-gracefully-shutdown-emacs-daemon
+    
+    See also [[http://www.gnu.org/software/emacs/manual/html_node/emacs/emacsclient-Options.html#emacsclient-Options][Emacs client command line options]]
+* TODO =org-protocol= on OSX
+    A 2010 [[http://jcardente.blogspot.com/2010/09/saving-weblinks-to-org-mode-from-safari.html][blog post]] by JCardente gives a thorough outline of how to
+    get =org-protocol= working on OSX. The Emacs Client application
+    bundle described here is implemented by Neil Smithline as
+    [[https://github.com/neil-smithline-elisp/EmacsClient.app][EmacsClient.app]].
+
+    After installing EmacsClient.app, the following steps get Chrome
+    to recognize the protocol:
+
+    Type this into the location bar
+    #+BEGIN_EXAMPLE
+    javascript:document.location = 'org-protocol:/store-link:/www.example.com'
+    #+END_EXAMPLE
+
+    Then click through the dialog to permit the protcol to be
+    followed. After this Chrome will recognize =org-protocol:/= links
+    typed into the location bar.
+
+    Source: http://stackoverflow.com/questions/2330545/is-it-possible-to-open-custom-url-scheme-with-google-chrome
+
+    https://gist.github.com/JoelBesada/6859173
+* TODO Enhancing =browse-url=
+- http://www.emacswiki.org/emacs/osx-browse.el
+- https://github.com/rolandwalker/osx-browse
+- http://superuser.com/questions/377186/how-do-i-start-chrome-using-a-specified-user-profile
+* TODO Shell Setup
+- http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/
+- http://totalterminal.binaryage.com/
+- http://rawsyntax.com/blog/learn-emacs-fit-your-workflow/
+- https://github.com/monsanto/readline-complete.el
+* TODO Web Dev Setup
+- [[http://web-mode.org/][Web Mode]]
+- https://github.com/thomblake/js3-mode
+- https://github.com/meandavejustice/node-resolver.el
+* TODO Refactoring methiods
+  - [[https://github.com/mhayashi1120/Emacs-erefactor][erefactor]] :: supports renaming symbols, but prompts each time
+  - [[https://github.com/chrisbarrett/emacs-refactor][emr]] :: focused on structural refactoring. Nothing for naming changes. 
+  - [[https://github.com/emacsmirror/redshank][redshank]] ::
+  - [[http://alexott.net/en/writings/emacs-devenv/EmacsCedet.html][CEDET]] :: 
+* TODO Backup Protocol
+http://www.emacswiki.org/emacs/ForceBackups vs
+http://www.emacswiki.org/emacs/BackupEachSave given that
+https://github.com/lewang/backup-walker only works with the builtin?
+
+Or https://github.com/bartman/git-wip,
+https://github.com/itsjeyd/git-wip-timemachine,
+and https://github.com/pidu/git-timemachine
+
+See also https://github.com/chadbraunduin/backups-mode and
+https://github.com/mrBliss/snapshot-timemachine
+
+* TODO Better Searching and Navigation
+  - Deft Mode
+    
+    http://www.jontourage.com/2013/08/15/setting-up-deft-mode-in-emacs-with-org-mode/
+* TODO Fonts
+  - [ ] http://hivelogic.com/articles/top-10-programming-fonts
+  - [ ] http://dejavu-fonts.org/wiki/Main_Page
+  - [ ] http://www.levien.com/type/myfonts/inconsolata.html
+  - [ ] http://www.marksimonson.com/fonts/view/anonymous-pro
+  - [ ] http://ergoemacs.org/emacs/emacs_list_and_set_font.html
+* TODO Packages to Test [1/3]
+  - [ ] calfw
+  - [X] [[https://github.com/pashinin/workgroups2][workgroups2]]
+  - [ ] [[https://github.com/ijp/mbe.el][mbe]]
+
+  See also the [[https://gist.github.com/jwiegley/5277578][notes]] John Wiegley's talk
+* Org
+*** TODO Org Modules
+    - [ ] https://github.com/tj64/org-dp
+    - [ ] [[http://orgmode.org/worg/org-contrib/org-velocity.html][org-velocity.el]]
+** Org-mode
+Set up a =#+STARTUPFILE:= with shared =#+MACRO:= definitions, starting
+with one for a [[http://emacs.stackexchange.com/questions/255/new-line-in-title-of-an-org-mode-exported-html-document][newline that works in both LaTeX and HTML export]].
+*** Org on mobile
+- https://github.com/jezcope/Org.tmbundle
+** Interoperation
+*** Sublime Text
+   - [[https://github.com/danielmagnussons/orgmode][Orgmode for Sublime Text 2 & 3]]
+*** Notational Velocity
+  - [[http://notational.net][Notational Velocity]]
+  - [[http://onethingwell.org/post/457674798/a-poor-mans-notational-velocity][A Poor Man's Notational Velocity]]
 * Footnotes
 
-[fn:1] Having multiple calls to =custom-set-variables= caused
+[fn:1] Having multiple calls to [[help:custom-set-variables][=custom-set-variables=]] caused
 problems in older versions of Emacs, as detailed [[http://dotemacs.de/custbuffer.html][here]]. In short, the
 last call sets the variable but the customize buffer saves its value
 to the first one encountered. But now this no longer seems to be the
