@@ -69,6 +69,7 @@ deleted by `w/delete-pid-file' on shutdown.")
 (defun w/write-pid-file ()
   (let ((temporary-file-directory (concat dotfiles-dir "run"))
 	(prefix (format "emacs-%s~" emacs-version)))
+    (make-directory temporary-file-directory :parents)
     (setq w/pid-file (make-temp-file prefix nil ".pid"))
     (with-temp-file w/pid-file
       (insert (format "%d\n" (emacs-pid))))))
