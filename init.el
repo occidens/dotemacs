@@ -79,14 +79,18 @@ deleted by `w/delete-pid-file' on shutdown.")
   "Return the directory from which PKG is loaded.
 
 Scans `package-alist'"
-  (package-desc-dir (cadr (assq pkg package-alist))))
+  (if (fboundp 'package-desc-dir)
+      (package-desc-dir (cadr (assq pkg package-alist)))
+    (warn "This version of `package.el' does not support `package-desc-dir'")
+    nil))
 
 (defun w/filter-load-path (pkg)
   "Remove path associated with PKG from `load-path'"
   (let ((pkg-dir (w/canonical-path (w/package-dir pkg))))
-    (setq load-path (w/filter-not
-		     (apply-partially 'w/same-directory-p pkg-dir)
-		     load-path))))
+    (when pkg-dir
+      (setq load-path (w/filter-not
+		       (apply-partially 'w/same-directory-p pkg-dir)
+		       load-path)))))
 
 ;; Macro for setting customizations
 ;; Refer to the following for more information on this problem
