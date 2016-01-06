@@ -23,10 +23,10 @@
 ;; 
 
 ;;; Code:
-
-(magit-wip-after-save-mode t)
-(magit-wip-after-apply-mode t)
-(magit-wip-before-change-mode t)
+(when (featurep 'magit-wip)
+  (magit-wip-after-save-mode t)
+  (magit-wip-after-apply-mode t)
+  (magit-wip-before-change-mode t))
 
 (if (display-graphic-p)
     (require 'git-gutter-fringe)
