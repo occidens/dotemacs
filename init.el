@@ -32,6 +32,14 @@ separator due to the call to `file-name-as-directory'"
 Assumes that CANONICAL-PATH has been verified with `w/canonical-path'"
   (string-equal canonical-path (w/canonical-path other-path)))
 
+(defun w/symbol-to-filename (sym &optional unsafe)
+  "Convert SYM to a string with UNSAFE chars removed"
+  (let ((unsafe-chars (or unsafe '("/" ":" "\\")))
+	(safe-char "-"))
+    (replace-regexp-in-string
+     (regexp-opt unsafe-chars) safe-char
+     (symbol-name sym))))
+
 ;;Base Load Path
 (defconst dotfiles-dir
   (file-name-directory
@@ -144,6 +152,7 @@ Scans `package-alist'"
        (add-hook 'emacs-startup-hook ',run--hooks))))
 
 (w/defsystem darwin)
+(w/defsystem gnu/linux)
 ;; TODO establish other system-specific settings
 ;; (w/defsystem gnu/linux)
 ;; (w/defsystem windows-nt)
@@ -151,7 +160,7 @@ Scans `package-alist'"
 
 ;; Load system-specific configuration
 ;; See http://irreal.org/blog/?p=1331
-(load (symbol-name system-type) t)
+(load (w/symbol-to-filename system-type) t)
 
 ;; Trash Setup
 (setq delete-by-moving-to-trash t)
