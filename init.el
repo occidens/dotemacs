@@ -235,7 +235,7 @@ Scans `package-alist'"
 
 ;; Define custom file
 (setq custom-file "~/.emacs.d/local/custom.el")
-(load custom-file)
+(load custom-file 'noerror)
 
 ;; (cond ((< emacs-major-version 22)
 ;;             ;; Emacs 21 customization.
