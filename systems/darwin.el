@@ -1,7 +1,5 @@
 ;; William West's Emacs Configuration
 
-(w/defsystem darwin)
-
 ;; Modifier Key Configuration
 ;;
 ;; The following configuration enables reasonable interoperability

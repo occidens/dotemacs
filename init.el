@@ -143,6 +143,12 @@ Scans `package-alist'"
 	 (run-hooks ',hook))
        (add-hook 'emacs-startup-hook ',run--hooks))))
 
+(w/defsystem darwin)
+;; TODO establish other system-specific settings
+;; (w/defsystem gnu/linux)
+;; (w/defsystem windows-nt)
+;; (w/defsystem cygwin)
+
 ;; Load system-specific configuration
 ;; See http://irreal.org/blog/?p=1331
 (load (symbol-name system-type) t)
