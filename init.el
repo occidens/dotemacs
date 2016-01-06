@@ -86,10 +86,11 @@ Scans `package-alist'"
 
 (defun w/filter-load-path (pkg)
   "Remove path associated with PKG from `load-path'"
-  (let ((pkg-dir (w/canonical-path (w/package-dir pkg))))
+  (let ((pkg-dir (w/package-dir pkg)))
     (when pkg-dir
       (setq load-path (w/filter-not
-		       (apply-partially 'w/same-directory-p pkg-dir)
+		       (apply-partially 'w/same-directory-p
+					(w/canonical-path pkg-dir))
 		       load-path)))))
 
 ;; Macro for setting customizations
@@ -266,9 +267,9 @@ Scans `package-alist'"
 
 (progn
   (global-set-key (kbd "H-l") 'org-store-link) ;HyperLink
-  (global-set-key (kbd "H-h e") 'emacs-index-search)
-  (global-set-key (kbd "H-h l") 'elisp-index-search)
-  (global-set-key (kbd "H-h h") 'info-apropos)
+  ;(global-set-key (kbd "H-h e") 'emacs-index-search)
+  ;(global-set-key (kbd "H-h l") 'elisp-index-search)
+  ;(global-set-key (kbd "H-h h") 'info-apropos)
   ;; Multiple Cursors
   (global-set-key (kbd "H-.") 'mc/mark-next-like-this)
   (global-set-key (kbd "H-,") 'mc/mark-previous-like-this)
