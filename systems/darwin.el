@@ -1,7 +1,5 @@
 ;; William West's Emacs Configuration
 
-(w/defsystem darwin)
-
 ;; Modifier Key Configuration
 ;;
 ;; The following configuration enables reasonable interoperability
@@ -17,6 +15,10 @@
 ;; - http://ergoemacs.org/emacs/emacs_hyper_super_keys.html
 ;; - http://irreal.org/blog/?p=145
 ;; - http://msol.io/blog/tech/2014/03/10/work-more-efficiently-on-your-mac-for-developers
+;;
+;; TODO: check that Seil is running with pgrep Seil
+;; TODO: Do we want this when we are running in a terminal?
+;;
 (setq ns-function-modifier      'hyper
       ns-control-modifier       'hyper
       ns-right-control-modifier 'control)

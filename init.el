@@ -126,6 +126,9 @@ Scans `package-alist'"
 (require 'pallet)
 (pallet-mode t)			     ; Calls (package-initialize)
 
+
+;; System-specific initialization
+
 (defmacro w/defsystem (sym)
   (let ((hook (intern (format "w/%s-hook" sym)))
 	(modules (intern (format "w/%s-modules" sym)))
@@ -137,15 +140,25 @@ Scans `package-alist'"
        (defvar ,modules nil
 	 ,(format "Packages to require when system is %s" sym))
        (defun ,require-modules ()
+	 ,(format "Require modules listed in `%s'" modules)
 	 (mapcar (lambda (p) (when p (require p))) ,modules))
        (add-hook ',hook ',require-modules)
        (defun ,run--hooks ()
-	 (run-hooks ',hook))
-       (add-hook 'emacs-startup-hook ',run--hooks))))
+	 (run-hooks ',hook)))))
 
-;; Load system-specific configuration
-;; See http://irreal.org/blog/?p=1331
-(load (symbol-name system-type) t)
+(w/defsystem darwin)
+
+(defun w/initsystem ()
+  "Load the system-specific init file an set up hooks.
+
+Based on an original idea from http://irreal.org/blog/?p=1331"
+  (let ((sys-name (symbol-name system-type))
+	(run-sys-hook (intern (format "w/run-%s-hooks" system-type))))
+    (message "Initializing system-specific settings for %s..." sys-name)
+    (load sys-name t)
+    (add-hook 'emacs-startup-hook run-sys-hook)))
+
+(w/initsystem)
 
 ;; Trash Setup
 (setq delete-by-moving-to-trash t)
