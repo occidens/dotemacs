@@ -2,7 +2,13 @@
 ;;
 ;;
 
-;; Fundamental Utility Functions
+;; Fundamental Utility Functions and Macros
+
+(defmacro w/with-lexical-binding (&rest forms)
+  "Evaluate FORMS with lexical binding using `eval'"
+  (declare (indent 1) (debug t))
+  `(eval '(progn ,@forms) t))
+
 (defun w/filter (condp lst)
   "Rudimentary filter.
 
@@ -31,6 +37,13 @@ separator due to the call to `file-name-as-directory'"
 
 Assumes that CANONICAL-PATH has been verified with `w/canonical-path'"
   (string-equal canonical-path (w/canonical-path other-path)))
+
+;; (defun w/load (file)
+;;   (prin1 (format "Loading %s..." file))
+;;   (if (load file t)
+;;       (progn (print "OK") t)
+;;     (print "Not Found")
+;;     nil))
 
 ;;Base Load Path
 (defconst dotfiles-dir
@@ -168,6 +181,25 @@ Based on an original idea from http://irreal.org/blog/?p=1331"
 
 ;; Editing Functions
 (require 'editing)
+
+;; Bell Throttling
+(defvar w/bell-throttle-value 1)
+
+(defun w/throttle-bell ()
+  "Set up throttle for the bell
+
+Adapted from URL `https://gist.github.com/CrypticTemple', using lexical
+binding."
+  (setq ring-bell-function
+	(w/with-lexical-binding
+	    (let ((ringable t))
+	      (lambda () "Throttle bell ringing to once per second"
+		(when ringable
+		  (ding)
+		  (setq ringable nil)
+		  (run-at-time 1 nil (lambda () (setq ringable t)))))))))
+
+(w/throttle-bell)
 
 ;; Backup Settings
 
