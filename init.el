@@ -308,6 +308,18 @@ binding."
 
 (require 'multiple-cursors)
 
+;;Protect Emacs and Package sources
+;;See this [[http://bit.ly/1JWvZLv][StackExchange post]]
+;;Also possible to set up view-mode with (eval . (view-mode 1))
+
+(dir-locals-set-class-variables
+ 'emacs
+ '((nil . ((buffer-read-only . t)))))
+
+(let ((pkg-dirs (cons package-user-dir package-directory-list)))
+  (mapcar (lambda (dir) (dir-locals-set-directory-class dir 'emacs))
+	  pkg-dirs))
+
 ;;Global keys
 
 (progn
