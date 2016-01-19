@@ -326,4 +326,7 @@ binding."
   (global-set-key (kbd "H-p a") 'golden-ratio-adjust))
 
 ;;Start server
-(server-start)
+(if (server-running-p server-name)
+    (message "Server not started because server \"%s\" already running"
+	     server-name)
+  (server-start))
