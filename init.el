@@ -323,6 +323,12 @@ binding."
   (mapcar (lambda (dir) (dir-locals-set-directory-class dir 'emacs))
 	  pkg-dirs))
 
+;; Prevent orglink mode from lisp-interaction-mode
+
+(advice-add #'turn-on-orglink-mode-if-desired :before-until
+	    (lambda () "Do not enable orglink mode in lisp-interaction-mode"
+	      (eq major-mode 'lisp-interaction-mode)))
+
 ;;Global keys
 
 (progn
