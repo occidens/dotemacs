@@ -93,9 +93,12 @@
 (add-hook 'org-mode-hook 'w/org-ispell-skip-setup)
 
 (add-hook 'org-mode-hook 'auto-fill-mode)
+
 ;; Key bindings
 (add-hook 'org-mode-hook
 	  (lambda ()
 	    (local-set-key (kbd "H-h") 'org-toggle-link-display)))
+
+(setq org-export-async-debug t)
 
 (provide 'init-org)
