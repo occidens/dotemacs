@@ -351,3 +351,9 @@ binding."
     (message "Server not started because server \"%s\" already running"
 	     server-name)
   (server-start))
+
+;; Debug errors in startup that occur after this init file is
+;; run. Note that the --debug-init command line option only enables
+;; debugging for this init file.
+(add-hook 'after-init-hook
+          (lambda () (setq debug-on-error t)))
