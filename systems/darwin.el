@@ -35,3 +35,15 @@
 ;;Source Directory
 ;;TODO resolve version
 (setq source-directory "~/Code/gemein/Machinor/emacs-24.4")
+
+(defun w/osx-export-org-calendar (days-ago days-ahead outfile &rest calendars)
+  (require 'async)
+  (require 's)
+  (async-start-process
+   "ical2org" shell-file-name
+   (lambda (proc)
+     (message "Downloaded latest calendar as of %s" (current-time-string)))
+   "-c"
+   (format "ical2org -o %s -b %s -e %s %s"
+	   outfile days-ago days-ahead
+	   (mapconcat (lambda (s) (s-wrap s "\"")) calendars " "))))
