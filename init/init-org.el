@@ -22,7 +22,8 @@
 
 (require 'ob-table)
 (require 'ox-gfm)
-(add-to-list 'w/darwin-modules 'org-mac-protocol)
+(when (display-graphic-p)
+  (add-to-list 'w/darwin-modules 'org-mac-protocol))
 
 ;; Don't prompt when evaluating lisp code blocks
 (defun ww/org-confirm-babel-evaluate (lang body)
