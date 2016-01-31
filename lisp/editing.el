@@ -43,11 +43,35 @@
     (beginning-of-defun 2)
     (backward-char offset)))
 
-(defun unfill-paragraph (&optional region)
-      "Takes a multi-line paragraph and makes it into a single line of text."
-      (interactive (progn (barf-if-buffer-read-only) '(t)))
-      (let ((fill-column (point-max)))
-        (fill-paragraph nil region)))
+(defun w/unfill-paragraph ()
+  "Replace newline chars in current paragraph by single spaces.
+This command does the inverse of `fill-paragraph'.
+
+URL `http://ergoemacs.org/emacs/emacs_unfill-paragraph.html'
+Version 2015-11-28"
+  (interactive)
+  (let ((fill-column most-positive-fixnum))
+    (fill-paragraph)))
+
+(defun w/unfill-region (start end)
+  "Replace newline chars in region by single spaces.
+This command does the inverse of `fill-region'.
+
+URL `http://ergoemacs.org/emacs/emacs_unfill-paragraph.html'
+Version 2015-11-28"
+  (interactive "r")
+  (let ((fill-column most-positive-fixnum))
+    (fill-region start end)))
+
+(defun w/ns-copy-unfilled-including-secondary ()
+  (interactive)
+  (let ((selection (buffer-substring (point) (mark t))))
+    (with-temp-buffer
+      (insert selection)
+      (w/unfill-region (point-min) (point-max))
+      (kill-ring-save (point-min) (point-max))
+      (ns-store-selection-internal
+       'SECONDARY (buffer-substring (point-min) (point-max))))))
 
 (define-key global-map "\M-Q" 'unfill-paragraph)
 
