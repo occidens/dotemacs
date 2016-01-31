@@ -357,3 +357,4 @@ binding."
 ;; debugging for this init file.
 (add-hook 'after-init-hook
           (lambda () (setq debug-on-error t)))
+(put 'erase-buffer 'disabled nil)
