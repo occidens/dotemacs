@@ -102,4 +102,35 @@
 
 (setq org-export-async-debug t)
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(global-orglink-mode t)
+ '(org-export-allow-bind-keywords t)
+ '(org-export-backends
+   (quote
+    (org gfm md latex icalendar html ascii jekyll)))
+ '(org-footnote-auto-adjust t)
+ '(org-jekyll-include-yaml-front-matter t)
+ '(org-latex-packages-alist
+   (quote
+    (("" "color" nil)
+     ("" "listings" nil))))
+ '(org-modules
+   (quote
+    (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-mouse org-rmail org-w3m org-elisp-symbol)))
+ '(org-mouse-features
+   (quote
+    (context-menu move-tree yank-link activate-stars activate-bullets activate-checkboxes)))
+ '(org-src-fontify-natively nil)
+ '(org-src-window-setup
+   (quote other-window))
+ '(org-use-speed-commands t)
+ '(orglink-activate-in-modes
+   (quote
+    (emacs-lisp-mode ruby-mode)))
+ '(orglink-mode-lighter " Lnk"))
+
 (provide 'init-org)

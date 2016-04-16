@@ -279,8 +279,9 @@ binding."
 (unless (require 'local-org nil t) (princ "No org settings found"))
 (unless (require 'local-blog nil t) (princ "No blog settings found"))
 
-;; Define custom file
-(setq custom-file "~/.emacs.d/local/custom.el")
+;; Custom configuration
+(require 'initsplit)
+(setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
 ;;VC Configuration
