@@ -283,20 +283,6 @@ binding."
 (setq custom-file "~/.emacs.d/local/custom.el")
 (load custom-file 'noerror)
 
-;; (cond ((< emacs-major-version 22)
-;;             ;; Emacs 21 customization.
-;;             (setq custom-file "~/.custom-21.el"))
-;;            ((and (= emacs-major-version 22)
-;;                  (< emacs-minor-version 3))
-;;             ;; Emacs 22 customization, before version 22.3.
-;;             (setq custom-file "~/.custom-22.el"))
-;;            (t
-;;             ;; Emacs version 22.3 or later.
-;;             (setq custom-file "~/.emacs-custom.el")))
-     
-;;      (load custom-file)
-
-
 ;;VC Configuration
 (setq vc-handled-backends '(SVN Git)
       vc-follow-symlinks t)
