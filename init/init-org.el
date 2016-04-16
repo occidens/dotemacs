@@ -96,9 +96,12 @@
 (add-hook 'org-mode-hook 'auto-fill-mode)
 
 ;; Key bindings
-(add-hook 'org-mode-hook
-	  (lambda ()
-	    (local-set-key (kbd "H-h") 'org-toggle-link-display)))
+
+(defun w/org-set-key-bindings ()
+  (local-set-key (kbd "H-t t") 'org-toggle-link-display)
+  (local-set-key (kbd "H-t p") 'org-toggle-pretty-entities))
+
+(add-hook 'org-mode-hook #'w/org-set-key-bindings)
 
 (setq org-export-async-debug t)
 
