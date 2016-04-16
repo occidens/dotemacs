@@ -19,9 +19,13 @@
 ;; TODO: check that Seil is running with pgrep Seil
 ;; TODO: Do we want this when we are running in a terminal?
 ;;
-(setq ns-function-modifier      'hyper
-      ns-control-modifier       'hyper
-      ns-right-control-modifier 'control)
+
+(if ns-initialized
+    (progn (setq ns-function-modifier      'hyper
+		 ns-control-modifier       'hyper
+		 ns-right-control-modifier 'control)
+	   (message "Set up ns-modifiers"))
+  (message "Skipped setting up ns-modifiers"))
 
 ;; Set exec path from shell
 (exec-path-from-shell-initialize)
