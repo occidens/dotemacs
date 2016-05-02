@@ -63,6 +63,19 @@ Version 2015-11-28"
   (let ((fill-column most-positive-fixnum))
     (fill-region start end)))
 
+;; TODO: Understand exactly how indent is stored with text properties
+(defun w/right-indent (from to)
+  (interactive "*r")
+  (increase-right-margin from to 1)
+  (unless auto-fill-function
+    (fill-region from to nil t t)))
+
+(defun w/right-dedent (from to)
+  (interactive "*r")
+  (decrease-right-margin from to 1)
+  (unless auto-fill-function
+    (fill-region from to nil t t)))
+
 (defun w/ns-copy-unfilled-including-secondary ()
   (interactive)
   (let ((selection (buffer-substring (point) (mark t))))
@@ -73,7 +86,10 @@ Version 2015-11-28"
       (ns-store-selection-internal
        'SECONDARY (buffer-substring (point-min) (point-max))))))
 
-(define-key global-map "\M-Q" 'unfill-paragraph)
+(progn
+  (global-set-key (kbd "M-Q") 'w/unfill-paragraph)
+  (global-set-key (kbd "H-[") 'w/right-indent)
+  (global-set-key (kbd "H-]") 'w/right-dedent))
 
 (defvar lisp-modes  '(emacs-lisp-mode
                       inferior-emacs-lisp-mode
