@@ -30,6 +30,15 @@
 ;; Set exec path from shell
 (exec-path-from-shell-initialize)
 
+;;
+(require 'alert)
+;; (require 'rvm)
+;; (rvm-use-default)
+
+;;(if (rvm-working-p)
+    (setq alert-default-style 'notifier)
+;;  (setq alert-default-style 'message))
+
 ;;Spelling
 (setq ispell-program-name "aspell")
 
