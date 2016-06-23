@@ -126,7 +126,7 @@
 (depends-on "thingatpt+")
 (depends-on "transpose-frame")
 (depends-on "trie")
-(depends-on "unison-mode" :git "https://github.com/occidens/unison-mode.git")
+(depends-on "unison-mode")
 (depends-on "wc-mode")
 (depends-on "web-mode")
 (depends-on "workgroups2")
@@ -149,7 +149,6 @@
 (depends-on "engine-mode" :git "https://github.com/occidens/engine-mode" :branch "experimental")
 (depends-on "org-mac-protocol" :git "https://github.com/occidens/org-mac-protocol" :branch "packaging")
 (depends-on "hideshow-org" :git "https://github.com/occidens/hideshow-org")
-(depends-on "unison-mode" :git "https://github.com/occidens/unison-mode.git")
 
 ;; Own packages
 ;(depends-on "rex" :git "rsdn:repos/rex.el.git")
