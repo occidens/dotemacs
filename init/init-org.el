@@ -110,6 +110,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(deft-directory "~/Org/")
+ '(deft-extensions
+    (quote
+     ("org" "txt" "text" "md" "markdown")))
+ '(deft-org-mode-title-prefix t)
+ '(deft-recursive t)
  '(global-orglink-mode t)
  '(org-export-allow-bind-keywords t)
  '(org-export-backends

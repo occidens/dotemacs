@@ -20,6 +20,7 @@
 (depends-on "dash")
 (depends-on "dash-functional")
 (depends-on "debbugs")
+(depends-on "deft")
 (depends-on "dict-tree")
 (depends-on "direx")
 (depends-on "dos")
