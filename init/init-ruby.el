@@ -1,5 +1,5 @@
-(require 'inf-ruby) ;https://github.com/nonsequitur/inf-ruby
 (require 'rvm)	    ;https://github.com/senny/rvm.el
+;(require 'inf-ruby) ;https://github.com/nonsequitur/inf-ruby
 
 ;; Set up RVM
 ;; See the following references for further informatuon

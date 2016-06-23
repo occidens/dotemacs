@@ -57,6 +57,7 @@
 (depends-on "heap")
 (depends-on "hideshow-org" :git "https://github.com/occidens/hideshow-org")
 (depends-on "highlight-indentation")
+(depends-on "highlight2clipboard")
 (depends-on "ht")
 (depends-on "impatient-mode")
 (depends-on "indent-guide")
