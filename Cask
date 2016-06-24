@@ -50,10 +50,12 @@
 (depends-on "git-annex")
 (depends-on "git-gutter")
 (depends-on "git-gutter-fringe")
-(depends-on "git-modes" :git "https://github.com/magit/git-modes.git")
 (depends-on "git-timemachine")
 (depends-on "git-wip-timemachine")
+(depends-on "gitattributes-mode")
 (depends-on "gitconfig")
+(depends-on "gitconfig-mode")
+(depends-on "gitignore-mode")
 (depends-on "golden-ratio")
 (depends-on "graphviz-dot-mode")
 (depends-on "heap")
@@ -154,7 +156,6 @@
 
 ;; Other packages not yet on ELPA or MELPA
 (depends-on "keyboard-cat-mode" :git "https://github.com/skeeto/.emacs.d.git" :files ("lisp/keyboard-cat-mode.el"))
-(depends-on "git-modes" :git "https://github.com/magit/git-modes.git")
 
 ;; Own versions of published packages
 (depends-on "engine-mode" :git "https://github.com/occidens/engine-mode" :branch "experimental")
