@@ -2,7 +2,13 @@
 ;;
 ;;
 
-;; Fundamental Utility Functions
+;; Fundamental Utility Functions and Macros
+
+(defmacro w/with-lexical-binding (&rest forms)
+  "Evaluate FORMS with lexical binding using `eval'"
+  (declare (indent 1) (debug t))
+  `(eval '(progn ,@forms) t))
+
 (defun w/filter (condp lst)
   "Rudimentary filter.
 
@@ -31,6 +37,13 @@ separator due to the call to `file-name-as-directory'"
 
 Assumes that CANONICAL-PATH has been verified with `w/canonical-path'"
   (string-equal canonical-path (w/canonical-path other-path)))
+
+;; (defun w/load (file)
+;;   (prin1 (format "Loading %s..." file))
+;;   (if (load file t)
+;;       (progn (print "OK") t)
+;;     (print "Not Found")
+;;     nil))
 
 ;;Base Load Path
 (defconst dotfiles-dir
@@ -126,6 +139,9 @@ Scans `package-alist'"
 (require 'pallet)
 (pallet-mode t)			     ; Calls (package-initialize)
 
+
+;; System-specific initialization
+
 (defmacro w/defsystem (sym)
   (let ((hook (intern (format "w/%s-hook" sym)))
 	(modules (intern (format "w/%s-modules" sym)))
@@ -137,15 +153,25 @@ Scans `package-alist'"
        (defvar ,modules nil
 	 ,(format "Packages to require when system is %s" sym))
        (defun ,require-modules ()
+	 ,(format "Require modules listed in `%s'" modules)
 	 (mapcar (lambda (p) (when p (require p))) ,modules))
        (add-hook ',hook ',require-modules)
        (defun ,run--hooks ()
-	 (run-hooks ',hook))
-       (add-hook 'emacs-startup-hook ',run--hooks))))
+	 (run-hooks ',hook)))))
 
-;; Load system-specific configuration
-;; See http://irreal.org/blog/?p=1331
-(load (symbol-name system-type) t)
+(w/defsystem darwin)
+
+(defun w/initsystem ()
+  "Load the system-specific init file an set up hooks.
+
+Based on an original idea from http://irreal.org/blog/?p=1331"
+  (let ((sys-name (symbol-name system-type))
+	(run-sys-hook (intern (format "w/run-%s-hooks" system-type))))
+    (message "Initializing system-specific settings for %s..." sys-name)
+    (load sys-name t)
+    (add-hook 'emacs-startup-hook run-sys-hook)))
+
+(w/initsystem)
 
 ;; Trash Setup
 (setq delete-by-moving-to-trash t)
@@ -155,6 +181,25 @@ Scans `package-alist'"
 
 ;; Editing Functions
 (require 'editing)
+
+;; Bell Throttling
+(defvar w/bell-throttle-value 1)
+
+(defun w/throttle-bell ()
+  "Set up throttle for the bell
+
+Adapted from URL `https://gist.github.com/CrypticTemple', using lexical
+binding."
+  (setq ring-bell-function
+	(w/with-lexical-binding
+	    (let ((ringable t))
+	      (lambda () "Throttle bell ringing to once per second"
+		(when ringable
+		  (ding)
+		  (setq ringable nil)
+		  (run-at-time 1 nil (lambda () (setq ringable t)))))))))
+
+(w/throttle-bell)
 
 ;; Backup Settings
 
@@ -234,23 +279,10 @@ Scans `package-alist'"
 (unless (require 'local-org nil t) (princ "No org settings found"))
 (unless (require 'local-blog nil t) (princ "No blog settings found"))
 
-;; Define custom file
-(setq custom-file "~/.emacs.d/local/custom.el")
+;; Custom configuration
+(require 'initsplit)
+(setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
-
-;; (cond ((< emacs-major-version 22)
-;;             ;; Emacs 21 customization.
-;;             (setq custom-file "~/.custom-21.el"))
-;;            ((and (= emacs-major-version 22)
-;;                  (< emacs-minor-version 3))
-;;             ;; Emacs 22 customization, before version 22.3.
-;;             (setq custom-file "~/.custom-22.el"))
-;;            (t
-;;             ;; Emacs version 22.3 or later.
-;;             (setq custom-file "~/.emacs-custom.el")))
-     
-;;      (load custom-file)
-
 
 ;;VC Configuration
 (setq vc-handled-backends '(SVN Git)
@@ -262,6 +294,27 @@ Scans `package-alist'"
   (eval-after-load "emr" '(emr-initialize)))
 
 (require 'multiple-cursors)
+
+;; Protect Emacs and Package sources
+;; See this [[http://bit.ly/1JWvZLv][StackExchange post]]
+;; Also possible to set up view-mode with (eval . (view-mode 1))
+
+(dir-locals-set-class-variables
+ 'emacs
+ '((nil . ((buffer-read-only . t)))))
+
+;; TODO: work out how to protect `package-user-dir' without blocking
+;; package installation.
+;; (let ((pkg-dirs (cons package-user-dir package-directory-list)))
+(let ((pkg-dirs package-directory-list))
+  (mapcar (lambda (dir) (dir-locals-set-directory-class dir 'emacs))
+	  pkg-dirs))
+
+;; Prevent orglink mode from lisp-interaction-mode
+
+(advice-add #'turn-on-orglink-mode-if-desired :before-until
+	    (lambda () "Do not enable orglink mode in lisp-interaction-mode"
+	      (eq major-mode 'lisp-interaction-mode)))
 
 ;;Global keys
 
@@ -281,4 +334,14 @@ Scans `package-alist'"
   (global-set-key (kbd "H-p a") 'golden-ratio-adjust))
 
 ;;Start server
-(server-start)
+(if (server-running-p server-name)
+    (message "Server not started because server \"%s\" already running"
+	     server-name)
+  (server-start))
+
+;; Debug errors in startup that occur after this init file is
+;; run. Note that the --debug-init command line option only enables
+;; debugging for this init file.
+(add-hook 'after-init-hook
+          (lambda () (setq debug-on-error t)))
+(put 'erase-buffer 'disabled nil)

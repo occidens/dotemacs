@@ -1,7 +1,5 @@
 ;; William West's Emacs Configuration
 
-(w/defsystem darwin)
-
 ;; Modifier Key Configuration
 ;;
 ;; The following configuration enables reasonable interoperability
@@ -17,9 +15,17 @@
 ;; - http://ergoemacs.org/emacs/emacs_hyper_super_keys.html
 ;; - http://irreal.org/blog/?p=145
 ;; - http://msol.io/blog/tech/2014/03/10/work-more-efficiently-on-your-mac-for-developers
-(setq ns-function-modifier      'hyper
-      ns-control-modifier       'hyper
-      ns-right-control-modifier 'control)
+;;
+;; TODO: check that Seil is running with pgrep Seil
+;; TODO: Do we want this when we are running in a terminal?
+;;
+
+(if ns-initialized
+    (progn (setq ns-function-modifier      'hyper
+		 ns-control-modifier       'hyper
+		 ns-right-control-modifier 'control)
+	   (message "Set up ns-modifiers"))
+  (message "Skipped setting up ns-modifiers"))
 
 ;; Set exec path from shell
 (exec-path-from-shell-initialize)
@@ -33,3 +39,15 @@
 ;;Source Directory
 ;;TODO resolve version
 (setq source-directory "~/Code/gemein/Machinor/emacs-24.4")
+
+(defun w/osx-export-org-calendar (days-ago days-ahead outfile &rest calendars)
+  (require 'async)
+  (require 's)
+  (async-start-process
+   "ical2org" shell-file-name
+   (lambda (proc)
+     (message "Downloaded latest calendar as of %s" (current-time-string)))
+   "-c"
+   (format "ical2org -o %s -b %s -e %s %s"
+	   outfile days-ago days-ahead
+	   (mapconcat (lambda (s) (s-wrap s "\"")) calendars " "))))

@@ -43,13 +43,53 @@
     (beginning-of-defun 2)
     (backward-char offset)))
 
-(defun unfill-paragraph (&optional region)
-      "Takes a multi-line paragraph and makes it into a single line of text."
-      (interactive (progn (barf-if-buffer-read-only) '(t)))
-      (let ((fill-column (point-max)))
-        (fill-paragraph nil region)))
+(defun w/unfill-paragraph ()
+  "Replace newline chars in current paragraph by single spaces.
+This command does the inverse of `fill-paragraph'.
 
-(define-key global-map "\M-Q" 'unfill-paragraph)
+URL `http://ergoemacs.org/emacs/emacs_unfill-paragraph.html'
+Version 2015-11-28"
+  (interactive)
+  (let ((fill-column most-positive-fixnum))
+    (fill-paragraph)))
+
+(defun w/unfill-region (start end)
+  "Replace newline chars in region by single spaces.
+This command does the inverse of `fill-region'.
+
+URL `http://ergoemacs.org/emacs/emacs_unfill-paragraph.html'
+Version 2015-11-28"
+  (interactive "r")
+  (let ((fill-column most-positive-fixnum))
+    (fill-region start end)))
+
+;; TODO: Understand exactly how indent is stored with text properties
+(defun w/right-indent (from to)
+  (interactive "*r")
+  (increase-right-margin from to 1)
+  (unless auto-fill-function
+    (fill-region from to nil t t)))
+
+(defun w/right-dedent (from to)
+  (interactive "*r")
+  (decrease-right-margin from to 1)
+  (unless auto-fill-function
+    (fill-region from to nil t t)))
+
+(defun w/ns-copy-unfilled-including-secondary ()
+  (interactive)
+  (let ((selection (buffer-substring (point) (mark t))))
+    (with-temp-buffer
+      (insert selection)
+      (w/unfill-region (point-min) (point-max))
+      (kill-ring-save (point-min) (point-max))
+      (ns-store-selection-internal
+       'SECONDARY (buffer-substring (point-min) (point-max))))))
+
+(progn
+  (global-set-key (kbd "M-Q") 'w/unfill-paragraph)
+  (global-set-key (kbd "H-[") 'w/right-indent)
+  (global-set-key (kbd "H-]") 'w/right-dedent))
 
 (defvar lisp-modes  '(emacs-lisp-mode
                       inferior-emacs-lisp-mode
