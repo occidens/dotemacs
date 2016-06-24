@@ -1,7 +1,7 @@
 ;; Prefer org-plus-contrib if it is installed
-(when (and (package-installed-p 'org)
-	   (package-installed-p 'org-plus-contrib))
-  (w/filter-load-path 'org))
+;; (when (and (package-installed-p 'org)
+;; 	   (package-installed-p 'org-plus-contrib))
+;;   (w/filter-load-path 'org))
 
 (require 'org)
 
