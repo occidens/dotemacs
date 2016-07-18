@@ -163,5 +163,19 @@ Source: [[http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/Emacs][Em
 
 (defalias 'delete-file-and-buffer 'w/delete-file-and-buffer)
 
+;TODO is this safe given `magit-auto-revert-mode'?
+(defun w/touch-file-and-buffer ()
+  "Touch file and buffer"
+  (interactive)
+  (let ((fn (buffer-file-name)))
+    (when (and fn
+	       (verify-visited-file-modtime (current-buffer))
+	       (not (buffer-modified-p)))
+      (let ((now (current-time)))
+	(and (set-file-times (buffer-file-name) now)
+	     (set-visited-file-modtime now))))))
+
+(defalias 'touch-file-and-buffer 'w/touch-file-and-buffer)
+
 (provide 'editing)
 ;;; editing.el ends here
