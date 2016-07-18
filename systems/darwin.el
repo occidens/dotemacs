@@ -27,6 +27,9 @@
 	   (message "Set up ns-modifiers"))
   (message "Skipped setting up ns-modifiers"))
 
+;; Compensate for lack of <insert> key on mac
+(global-set-key (kbd "<f13>") 'overwrite-mode)
+
 ;; Set exec path from shell
 (exec-path-from-shell-initialize)
 
