@@ -30,6 +30,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(markdown-command "kramdown")
+ '(markdown-enable-wiki-links t)
  '(markdown-wiki-link-fontify-missing t)
  '(markdown-wiki-link-search-parent-directories t))
 
