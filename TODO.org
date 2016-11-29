@@ -1,9 +1,9 @@
 #+TITLE: Emacs Configuration Todo List
 #+STARTUP: indent entitiespretty
 
-* TODO Improve =init.el= organization
-- [ ] Load packages with [[https://github.com/jwiegley/use-package][=use-package=]]
-- [ ] Use =customize= [fn:1] with [[https://github.com/dabrahams/initsplit][=initsplit=]]
+* TODO Improve =init.el= organization [1/3]
+** DONE Use =customize= [fn:1] with [[https://github.com/dabrahams/initsplit][=initsplit=]]
+** TODO Load packages with [[https://github.com/jwiegley/use-package][=use-package=]]
 ** TODO Review =init.el= examples
 - *Magnar Sveen* limits =init.el= to XXX. Organized into
   - defuns
@@ -39,7 +39,10 @@
   and then the functions are called at the end of the init file.
   - lisp/
   - modes/
-  - themes/
+  - themes
+* TODO Better Searching and Navigation [0/2]
+** TODO [[http://jblevins.org/projects/deft/][Deft Mode]] [[http://jonathanchu.is/posts/setting-up-deft-mode-in-emacs-with-org-mode/][with Org Mode]]
+** TODO Helm vs Ido.
 * TODO Expedients [0/2]
 ** TODO Swap Frames
 http://www.emacswiki.org/emacs/TransposeWindows
@@ -92,10 +95,17 @@ http://www.emacswiki.org/emacs/transpose-frame.el
 - http://totalterminal.binaryage.com/
 - http://rawsyntax.com/blog/learn-emacs-fit-your-workflow/
 - https://github.com/monsanto/readline-complete.el
-* TODO Web Dev Setup
+* TODO Development Setups
+** TODO Ruby
+- https://github.com/dgutov/robe
+- https://github.com/senny/rvm.el
+- https://github.com/nonsequitur/inf-ruby/
+** TODO Web
 - [[http://web-mode.org/][Web Mode]]
 - https://github.com/thomblake/js3-mode
 - https://github.com/meandavejustice/node-resolver.el
+** TODO clojure
+https://github.com/flyingmachine/emacs-for-clojure
 * TODO Refactoring methiods
   - [[https://github.com/mhayashi1120/Emacs-erefactor][erefactor]] :: supports renaming symbols, but prompts each time
   - [[https://github.com/chrisbarrett/emacs-refactor][emr]] :: focused on structural refactoring. Nothing for naming changes. 
@@ -112,11 +122,6 @@ and https://github.com/pidu/git-timemachine
 
 See also https://github.com/chadbraunduin/backups-mode and
 https://github.com/mrBliss/snapshot-timemachine
-
-* TODO Better Searching and Navigation
-  - Deft Mode
-    
-    http://www.jontourage.com/2013/08/15/setting-up-deft-mode-in-emacs-with-org-mode/
 * TODO Fonts
   - [ ] http://hivelogic.com/articles/top-10-programming-fonts
   - [ ] http://dejavu-fonts.org/wiki/Main_Page
