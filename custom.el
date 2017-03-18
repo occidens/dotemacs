@@ -21,6 +21,8 @@
      ("\\`\\(org-\\|deft-\\|\\(global-\\)?orglink-\\)" "~/.emacs.d/init/init-org.el" nil nil))))
  '(initsplit-pretty-print t)
  '(js2-basic-offset 2)
+ '(magit-save-repository-buffers
+   (quote dontask))
  '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount
    (quote
