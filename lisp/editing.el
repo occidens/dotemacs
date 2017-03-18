@@ -177,5 +177,13 @@ Source: [[http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/Emacs][Em
 
 (defalias 'touch-file-and-buffer 'w/touch-file-and-buffer)
 
+
+(defun w/insert-uuid ()
+  (interactive)
+  (require 'uuid)
+  (insert (replace-regexp-in-string "-" "" (uuid-string))))
+
+(global-set-key (kbd "H-u") 'w/insert-uuid)
+
 (provide 'editing)
 ;;; editing.el ends here

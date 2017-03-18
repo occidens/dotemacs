@@ -140,6 +140,7 @@
 (depends-on "transpose-frame")
 (depends-on "trie")
 (depends-on "unison-mode")
+(depends-on "uuid")
 (depends-on "wc-mode")
 (depends-on "web-mode")
 (depends-on "workgroups2")
