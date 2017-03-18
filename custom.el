@@ -21,6 +21,13 @@
      ("\\`\\(org-\\|deft-\\|\\(global-\\)?orglink-\\)" "~/.emacs.d/init/init-org.el" nil nil))))
  '(initsplit-pretty-print t)
  '(js2-basic-offset 2)
+ '(mouse-wheel-progressive-speed nil)
+ '(mouse-wheel-scroll-amount
+   (quote
+    (1
+     ((shift)
+      . 1)
+     ((control)))))
  '(rmail-user-mail-address-regexp nil)
  '(safe-local-variable-values
    (quote
