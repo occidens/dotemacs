@@ -177,6 +177,25 @@ Source: [[http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/Emacs][Em
 
 (defalias 'touch-file-and-buffer 'w/touch-file-and-buffer)
 
+(defun w/find-first-non-ascii-char ()
+  "Find the first non-ascii character from point onwards.
+
+Source [[https://www.emacswiki.org/emacs/FindingNonAsciiCharacters][EmacsWiki]]"
+  (interactive)
+  (let (point)
+    (save-excursion
+      (setq point
+            (catch 'non-ascii
+              (while (not (eobp))
+                (or (eq (char-charset (following-char))
+                        'ascii)
+                    (throw 'non-ascii (point)))
+                (forward-char 1)))))
+    (if point
+        (goto-char point)
+      (message "No non-ascii characters."))))
+
+(defalias 'find-first-non-asciaa-char 'w/find-first-non-ascii-char)
 
 (defun w/insert-uuid ()
   (interactive)
