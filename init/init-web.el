@@ -40,5 +40,11 @@
 
 (add-hook 'web-mode-hook 'w/web-mode-init)
 
+(defun w/define-nodejs-repl-keys (mode-map)
+  (define-key mode-map (kbd "C-M-x") 'nodejs-repl-eval-function)
+  (define-key mode-map (kbd "C-x C-e") 'nodejs-send-last-sexp))
+
+(require 'nodejs-repl-eval)
+
 (provide 'init-web)
 ;;; init-web.el ends here

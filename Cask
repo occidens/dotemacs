@@ -71,6 +71,7 @@
 (depends-on "interval-tree")
 (depends-on "ioccur")
 (depends-on "js2-mode")
+(depends-on "js3-mode")
 (depends-on "json-mode")
 (depends-on "json-reformat")
 (depends-on "keyboard-cat-mode" :git "https://github.com/skeeto/.emacs.d.git" :files ("lisp/keyboard-cat-mode.el"))
@@ -88,6 +89,7 @@
 (depends-on "multi-term")
 (depends-on "multiple-cursors")
 (depends-on "nodejs-repl")
+(depends-on "nodejs-repl-eval" :git "https://gist.github.com/0eae865bc99fc9639fac.git")
 (depends-on "noflet")
 (depends-on "nvm")
 (depends-on "org")
@@ -159,6 +161,7 @@
 
 ;; Other packages not yet on ELPA or MELPA
 (depends-on "keyboard-cat-mode" :git "https://github.com/skeeto/.emacs.d.git" :files ("lisp/keyboard-cat-mode.el"))
+(depends-on "nodejs-repl-eval" :git "https://gist.github.com/0eae865bc99fc9639fac.git")
 
 ;; Own versions of published packages
 (depends-on "engine-mode" :git "https://github.com/occidens/engine-mode" :branch "experimental")
