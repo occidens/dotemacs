@@ -328,10 +328,13 @@ binding."
   (global-set-key (kbd "H-,") 'mc/mark-previous-like-this)
   (global-set-key (kbd "H-/") 'mc/mark-all-like-this)
   ;; Buffers
-  (global-set-key (kbd "H-k") 'bury-buffer)
+  (global-set-key (kbd "H-k")   'bury-buffer)
   (global-set-key (kbd "H-p p") 'golden-ratio-mode)
   (global-set-key (kbd "H-p w") 'golden-ratio-toggle-widescreen)
-  (global-set-key (kbd "H-p a") 'golden-ratio-adjust))
+  (global-set-key (kbd "H-p a") 'golden-ratio-adjust)
+  (global-set-key (kbd "H-=")   'text-scale-increase)
+  (global-set-key (kbd "H--")   'text-scale-decrease)
+  (global-set-key (kbd "H-0")   (lambda () (interactive) (text-scale-increase 0))))
 
 ;;Start server
 (if (server-running-p server-name)
