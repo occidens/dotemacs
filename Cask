@@ -27,7 +27,6 @@
 (depends-on "dict-tree")
 (depends-on "direx")
 (depends-on "dirtree")
-(depends-on "dos")
 (depends-on "draft-mode")
 (depends-on "el2markdown")
 (depends-on "engine-mode" :git "https://github.com/occidens/engine-mode" :branch "experimental")
