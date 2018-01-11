@@ -212,7 +212,8 @@ binding."
  ;; Don't clobber symlinks
  backup-by-copying      t
  ;; Don't litter fs with backup files
- backup-directory-alist '((".*" . "~/.saves"))
+ backup-directory-alist `((,tramp-file-name-regexp . nil)
+			  (".*" . "~/.saves"))
  ;; Prune old backup versions
  delete-old-versions    t
  kept-new-versions      6
