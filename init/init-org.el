@@ -127,6 +127,7 @@
    (quote
     (("" "color" nil)
      ("" "listings" nil))))
+ '(org-list-allow-alphabetical t)
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-mouse org-rmail org-w3m org-elisp-symbol)))
