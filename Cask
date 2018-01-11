@@ -76,7 +76,6 @@
 (depends-on "js3-mode")
 (depends-on "json-mode")
 (depends-on "json-reformat")
-(depends-on "keyboard-cat-mode" :git "https://github.com/skeeto/.emacs.d.git" :files ("lisp/keyboard-cat-mode.el"))
 (depends-on "kv")
 (depends-on "let-alist")
 (depends-on "lex")
@@ -169,7 +168,7 @@
 (depends-on "org-sync" :git "git://orgmode.org/org-sync.git")
 
 ;; Other packages not yet on ELPA or MELPA
-(depends-on "keyboard-cat-mode" :git "https://github.com/skeeto/.emacs.d.git" :files ("lisp/keyboard-cat-mode.el"))
+(depends-on "keyboard-cat-mode" :git "https://github.com/skeeto/.emacs.d.git" :ref "b06fa7451202c5e9a04ce48cba6b4a8f9dc6aa8d" :files ("lisp/keyboard-cat-mode.el"))
 (depends-on "nodejs-repl-eval" :git "https://gist.github.com/0eae865bc99fc9639fac.git")
 (depends-on "org-jekyll" :git "https://github.com/juanre/org-jekyll")
 
