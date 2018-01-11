@@ -45,7 +45,6 @@
 (depends-on "form-feed")
 (depends-on "frame-cmds")
 (depends-on "frame-fns")
-(depends-on "frame-restore")
 (depends-on "frame-tag")
 (depends-on "full-ack")
 (depends-on "fuzzy-format")
