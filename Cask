@@ -103,7 +103,6 @@
 (depends-on "org")
 (depends-on "org-caldav")
 (depends-on "org-grep")
-(depends-on "org-jekyll")
 (depends-on "org-journal")
 (depends-on "org-mac-protocol" :git "https://github.com/occidens/org-mac-protocol" :branch "packaging")
 (depends-on "org-octopress")
@@ -172,6 +171,7 @@
 ;; Other packages not yet on ELPA or MELPA
 (depends-on "keyboard-cat-mode" :git "https://github.com/skeeto/.emacs.d.git" :files ("lisp/keyboard-cat-mode.el"))
 (depends-on "nodejs-repl-eval" :git "https://gist.github.com/0eae865bc99fc9639fac.git")
+(depends-on "org-jekyll" :git "https://github.com/juanre/org-jekyll")
 
 ;; Own versions of published packages
 (depends-on "engine-mode" :git "https://github.com/occidens/engine-mode" :branch "experimental")
