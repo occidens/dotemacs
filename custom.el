@@ -87,7 +87,9 @@
  '(sr-windows-default-ratio 80)
  '(tool-bar-style
    (quote text))
+ '(tramp-default-method "ssh")
  '(vc-make-backup-files t)
+ '(wdired-allow-to-change-permissions t)
  '(wg-prefix-key "(kbd \"H-w\")")
  '(wg-remember-frame-for-each-wg t))
 (custom-set-faces
