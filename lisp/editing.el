@@ -204,5 +204,10 @@ Source [[https://www.emacswiki.org/emacs/FindingNonAsciiCharacters][EmacsWiki]]"
 
 (global-set-key (kbd "H-u") 'w/insert-uuid)
 
+(progn
+  (global-set-key (kbd "H-i s") 'lorem-ipsum-insert-sentences)
+  (global-set-key (kbd "H-i p") 'lorem-ipsum-insert-paragraphs)
+  (global-set-key (kbd "H-i l") 'lorem-ipsum-insert-list))
+
 (provide 'editing)
 ;;; editing.el ends here
