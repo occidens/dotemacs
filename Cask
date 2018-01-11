@@ -107,7 +107,6 @@
 (depends-on "org-grep")
 (depends-on "org-jekyll")
 (depends-on "org-journal")
-(depends-on "org-mac-link")
 (depends-on "org-mac-protocol" :git "https://github.com/occidens/org-mac-protocol" :branch "packaging")
 (depends-on "org-octopress")
 (depends-on "org-plus-contrib")
