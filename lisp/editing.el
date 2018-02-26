@@ -43,13 +43,53 @@
     (beginning-of-defun 2)
     (backward-char offset)))
 
-(defun unfill-paragraph (&optional region)
-      "Takes a multi-line paragraph and makes it into a single line of text."
-      (interactive (progn (barf-if-buffer-read-only) '(t)))
-      (let ((fill-column (point-max)))
-        (fill-paragraph nil region)))
+(defun w/unfill-paragraph ()
+  "Replace newline chars in current paragraph by single spaces.
+This command does the inverse of `fill-paragraph'.
 
-(define-key global-map "\M-Q" 'unfill-paragraph)
+URL `http://ergoemacs.org/emacs/emacs_unfill-paragraph.html'
+Version 2015-11-28"
+  (interactive)
+  (let ((fill-column most-positive-fixnum))
+    (fill-paragraph)))
+
+(defun w/unfill-region (start end)
+  "Replace newline chars in region by single spaces.
+This command does the inverse of `fill-region'.
+
+URL `http://ergoemacs.org/emacs/emacs_unfill-paragraph.html'
+Version 2015-11-28"
+  (interactive "r")
+  (let ((fill-column most-positive-fixnum))
+    (fill-region start end)))
+
+;; TODO: Understand exactly how indent is stored with text properties
+(defun w/right-indent (from to)
+  (interactive "*r")
+  (increase-right-margin from to 1)
+  (unless auto-fill-function
+    (fill-region from to nil t t)))
+
+(defun w/right-dedent (from to)
+  (interactive "*r")
+  (decrease-right-margin from to 1)
+  (unless auto-fill-function
+    (fill-region from to nil t t)))
+
+(defun w/ns-copy-unfilled-including-secondary ()
+  (interactive)
+  (let ((selection (buffer-substring (point) (mark t))))
+    (with-temp-buffer
+      (insert selection)
+      (w/unfill-region (point-min) (point-max))
+      (kill-ring-save (point-min) (point-max))
+      (ns-store-selection-internal
+       'SECONDARY (buffer-substring (point-min) (point-max))))))
+
+(progn
+  (global-set-key (kbd "M-Q") 'w/unfill-paragraph)
+  (global-set-key (kbd "H-[") 'w/right-indent)
+  (global-set-key (kbd "H-]") 'w/right-dedent))
 
 (defvar lisp-modes  '(emacs-lisp-mode
                       inferior-emacs-lisp-mode
@@ -122,6 +162,52 @@ Source: [[http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/Emacs][Em
           (kill-buffer))))))
 
 (defalias 'delete-file-and-buffer 'w/delete-file-and-buffer)
+
+;TODO is this safe given `magit-auto-revert-mode'?
+(defun w/touch-file-and-buffer ()
+  "Touch file and buffer"
+  (interactive)
+  (let ((fn (buffer-file-name)))
+    (when (and fn
+	       (verify-visited-file-modtime (current-buffer))
+	       (not (buffer-modified-p)))
+      (let ((now (current-time)))
+	(and (set-file-times (buffer-file-name) now)
+	     (set-visited-file-modtime now))))))
+
+(defalias 'touch-file-and-buffer 'w/touch-file-and-buffer)
+
+(defun w/find-first-non-ascii-char ()
+  "Find the first non-ascii character from point onwards.
+
+Source [[https://www.emacswiki.org/emacs/FindingNonAsciiCharacters][EmacsWiki]]"
+  (interactive)
+  (let (point)
+    (save-excursion
+      (setq point
+            (catch 'non-ascii
+              (while (not (eobp))
+                (or (eq (char-charset (following-char))
+                        'ascii)
+                    (throw 'non-ascii (point)))
+                (forward-char 1)))))
+    (if point
+        (goto-char point)
+      (message "No non-ascii characters."))))
+
+(defalias 'find-first-non-asciaa-char 'w/find-first-non-ascii-char)
+
+(defun w/insert-uuid ()
+  (interactive)
+  (require 'uuid)
+  (insert (replace-regexp-in-string "-" "" (uuid-string))))
+
+(global-set-key (kbd "H-u") 'w/insert-uuid)
+
+(progn
+  (global-set-key (kbd "H-i s") 'lorem-ipsum-insert-sentences)
+  (global-set-key (kbd "H-i p") 'lorem-ipsum-insert-paragraphs)
+  (global-set-key (kbd "H-i l") 'lorem-ipsum-insert-list))
 
 (provide 'editing)
 ;;; editing.el ends here

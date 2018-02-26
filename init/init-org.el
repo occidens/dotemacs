@@ -1,7 +1,7 @@
 ;; Prefer org-plus-contrib if it is installed
-(when (and (package-installed-p 'org)
-	   (package-installed-p 'org-plus-contrib))
-  (w/filter-load-path 'org))
+;; (when (and (package-installed-p 'org)
+;; 	   (package-installed-p 'org-plus-contrib))
+;;   (w/filter-load-path 'org))
 
 (require 'org)
 
@@ -22,7 +22,8 @@
 
 (require 'ob-table)
 (require 'ox-gfm)
-(add-to-list 'w/darwin-modules 'org-mac-protocol)
+(when (display-graphic-p)
+  (add-to-list 'w/darwin-modules 'org-mac-protocol))
 
 ;; Don't prompt when evaluating lisp code blocks
 (defun ww/org-confirm-babel-evaluate (lang body)
@@ -93,9 +94,53 @@
 (add-hook 'org-mode-hook 'w/org-ispell-skip-setup)
 
 (add-hook 'org-mode-hook 'auto-fill-mode)
+
 ;; Key bindings
-(add-hook 'org-mode-hook
-	  (lambda ()
-	    (local-set-key (kbd "H-h") 'org-toggle-link-display)))
+
+(defun w/org-set-key-bindings ()
+  (local-set-key (kbd "H-t t") 'org-toggle-link-display)
+  (local-set-key (kbd "H-t p") 'org-toggle-pretty-entities))
+
+(add-hook 'org-mode-hook #'w/org-set-key-bindings)
+
+(setq org-export-async-debug t)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(deft-directory "~/Org/")
+ '(deft-extensions
+    (quote
+     ("org" "txt" "text" "md" "markdown")))
+ '(deft-org-mode-title-prefix t)
+ '(deft-recursive t)
+ '(global-orglink-mode t)
+ '(org-export-allow-bind-keywords t)
+ '(org-export-backends
+   (quote
+    (org gfm md latex icalendar html ascii jekyll)))
+ '(org-footnote-auto-adjust t)
+ '(org-jekyll-include-yaml-front-matter t)
+ '(org-latex-packages-alist
+   (quote
+    (("" "color" nil)
+     ("" "listings" nil))))
+ '(org-list-allow-alphabetical t)
+ '(org-modules
+   (quote
+    (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-mouse org-rmail org-w3m org-elisp-symbol)))
+ '(org-mouse-features
+   (quote
+    (context-menu move-tree yank-link activate-stars activate-bullets activate-checkboxes)))
+ '(org-src-fontify-natively nil)
+ '(org-src-window-setup
+   (quote other-window))
+ '(org-use-speed-commands t)
+ '(orglink-activate-in-modes
+   (quote
+    (emacs-lisp-mode ruby-mode)))
+ '(orglink-mode-lighter " Lnk"))
 
 (provide 'init-org)
