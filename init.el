@@ -208,9 +208,9 @@ binding."
 
 ;; Backup Settings
 
-(require 'backup-each-save)
-(add-hook 'after-save-hook 'backup-each-save)
-(setq backup-each-save-mirror-location (dotfiles-path "backups"))
+;; (require 'backup-each-save)
+;; (add-hook 'after-save-hook 'backup-each-save)
+;; (setq backup-each-save-mirror-location (dotfiles-path "backups"))
 
 ;; Based on http://www.emacswiki.org/emacs/BackupDirectory
 (setq
@@ -343,6 +343,7 @@ binding."
   (global-set-key (kbd "H-0")   (lambda () (interactive) (text-scale-increase 0))))
 
 ;;Start server
+(require 'server)
 (if (server-running-p server-name)
     (message "Server not started because server \"%s\" already running"
 	     server-name)
